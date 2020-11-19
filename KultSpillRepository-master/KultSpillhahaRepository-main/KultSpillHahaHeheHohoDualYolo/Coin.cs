@@ -15,12 +15,12 @@ namespace KultSpillHahaHeheHohoDualYolo
         {
             coinLabel.Width = 150;
             coinLabel.Height = 50;
-            coinLabel.Top = 8;
-            coinLabel.Left = 935;
+            coinLabel.Top = 6;
+            coinLabel.Left = 918;
             coinLabel.Text = "Gold: ";
             coinLabel.ForeColor = Color.Gold;
             coinLabel.BackColor = Color.Transparent;
-            FontFamily fontFamily = new FontFamily("Times New Roman");
+            FontFamily fontFamily = new FontFamily(/*"Times New Roman"*/"Arial");
             Font font = new Font(fontFamily, 25);
             coinLabel.Font = font;
             //foreach (var coin in TestCoin)

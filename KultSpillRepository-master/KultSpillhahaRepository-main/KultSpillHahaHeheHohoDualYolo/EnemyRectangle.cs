@@ -13,7 +13,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         public int CurrentSpeed;
         private int oldTop;
         private int oldLeft;
-        public EnemyRectangle(Color color, int x, int y, string direction, int currentSpeed) : base("Enemy", 50, 50, color, x,  y, false/*, direction*//*,"kake" , currentSpeed*/)
+        public EnemyRectangle(Color color, int x, int y, string direction, int currentSpeed, int width, int height) : base("Enemy", width, height, color, x,  y, false)
         {
             Direction = direction;
             CurrentSpeed = currentSpeed;
