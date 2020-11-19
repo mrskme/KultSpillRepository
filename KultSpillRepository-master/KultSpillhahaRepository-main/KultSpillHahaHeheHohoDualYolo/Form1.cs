@@ -12,31 +12,37 @@ namespace KultSpillHahaHeheHohoDualYolo
 {
     public partial class Form1 : Form
     {
-        private int position;
-        Spawner enemySpawn = new Spawner();
+        Spawner spawner = new Spawner();
         private List<EnemyRectangle> enemyList = Spawner.EnemyList;
+        private Player player = Spawner.PlayerList[0];
         public Form1()
         {
             InitializeComponent();
             LoadGame();
         }
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            EnemyRectangle.IsEnemyColliding();
-            Move();
-        }
         private void LoadGame()
         {
-            enemySpawn.CreateEnemies(this);
-            enemySpawn.CreateGroundi(this);
-
+            spawner.addAllObjectsToList();
+            spawner.CreateEnemies(this);
+            spawner.CreateGround(this);
+            spawner.CreatePlayer(this);
         }
-        public void Move()
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            MoveEverything();
+        }
+        public void MoveEverything()
         {
             for (int i = 0; i < enemyList.Count; i++)
             {
-                enemyList[i].MoveDirection();
+                enemyList[i].MoveEnemyInDirection();
             }
+            player.MovePlayerInDirection();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }
