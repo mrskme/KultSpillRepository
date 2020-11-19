@@ -21,17 +21,6 @@ namespace KultSpillHahaHeheHohoDualYolo
             var isColliding = NewRectangle.Bounds.IntersectsWith(Object2.NewRectangle.Bounds);
             return isColliding;
         }
-        public bool IsObjectCollidingPrev(Collision object1)
-        {
-            foreach (Collision object2 in allObjectsList)
-            {
-                if (object1 != object2)
-                {
-                    return object1.CheckForCollision(object2);
-                }
-            }
-            return false;
-        }
         public bool IsObjectColliding(Collision object1)
         {
             foreach (Collision object2 in allObjectsList)

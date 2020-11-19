@@ -61,16 +61,6 @@ namespace KultSpillHahaHeheHohoDualYolo
                 _direction = null;
             }
         }
-        public void MovePlayerInDirectionPrev()
-        {
-            if (!IsObjectColliding(this))
-            {
-                if (_direction == "down") NewRectangle.Top += _walkingSpeed;
-                else if (_direction == "up") NewRectangle.Top -= _walkingSpeed;
-                else if (_direction == "left") NewRectangle.Left -= _walkingSpeed;
-                else if (_direction == "right") NewRectangle.Left += _walkingSpeed;
-            }
-        }
         public void MovePlayerInDirection()
         {
             var oldTop = NewRectangle.Top;
