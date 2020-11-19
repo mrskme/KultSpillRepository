@@ -10,34 +10,44 @@ namespace KultSpillHahaHeheHohoDualYolo
 {
     class Coin : Rectangle1
     {
-        private int _coinCount;
         public static readonly Label coinLabel = new Label();
-        public Coin(int width, int height, int x, int y) :base("coin",width, height, Color.Gold, x,y, false)
+        public Coin( int x, int y) :base("coin",17, 24, Color.Gold, x,y, false)
         {
-            //player skal ha coin count (variabel og coin grab)
-            coinLabel.Width = 50;
-            coinLabel.Height = 15;
-            coinLabel.Top = 30;
-            coinLabel.Left = 100;
+            coinLabel.Width = 150;
+            coinLabel.Height = 50;
+            coinLabel.Top = 8;
+            coinLabel.Left = 935;
             coinLabel.Text = "Gold: ";
             coinLabel.ForeColor = Color.Gold;
-            coinLabel.BackColor = Color.CornflowerBlue;
+            coinLabel.BackColor = Color.Transparent;
+            FontFamily fontFamily = new FontFamily("Times New Roman");
+            Font font = new Font(fontFamily, 25);
+            coinLabel.Font = font;
+            //foreach (var coin in TestCoin)
+            //{
+            //    int x = random.Next();
+            //    int y = random.Next();
+            //    coin.x = x;
+            //}
+            //NewRectangle.SendToBack(); ???
         }
-
-        public void CoinGrab()
+        public void MakeCoinInvisible()
         {
-            if (IsObjectColliding(this) && NewRectangle.Visible)
-            {
-                _coinCount++;
-                NewRectangle.Visible = false;
-                UpdateCoinLabel();
-            }
+            NewRectangle.Visible = false;
         }
-
-        public void UpdateCoinLabel()
+        public bool IsCoinVisible()
         {
-            coinLabel.Text = $"Gold: {_coinCount}";
+            return NewRectangle.Visible;
         }
-
+        //private void RandomCoinLocations()
+        //{
+        //    Random random = new Random();
+        //    foreach (var coin in TestCoin)
+        //    {
+        //        int x = random.Next();
+        //        int y = random.Next();
+        //        coin.x = x;
+        //    }
+        //}
     }
 }
