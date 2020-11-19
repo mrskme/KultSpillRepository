@@ -11,7 +11,7 @@ namespace KultSpillHahaHeheHohoDualYolo
     {
         private bool _isImmovable;
         protected PictureBox NewRectangle { get; } = new PictureBox();
-        private readonly List<Collision> allObjectsList = Spawner.allObjects;
+        private readonly List<Collision> allCollideablesList = Spawner.allCollideables;
         public Collision(bool isImmovable)
         {
             _isImmovable = isImmovable;
@@ -23,7 +23,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         }
         public bool IsObjectColliding(Collision object1)
         {
-            foreach (Collision object2 in allObjectsList)
+            foreach (Collision object2 in allCollideablesList)
             {
                 if (object1 != object2)
                 {

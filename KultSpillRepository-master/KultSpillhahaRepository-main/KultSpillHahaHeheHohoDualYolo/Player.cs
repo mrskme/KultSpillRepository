@@ -5,13 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace KultSpillHahaHeheHohoDualYolo
 {
     class Player : Rectangle1
     {
-        private static List<Collision> allObjectList = Spawner.allObjects;
-
+        private static List<Collision> allObjectList = Spawner.allCollideables;
+        //hvorfor er ikke resharper available
+        //hvorfor lagger spilleren når jeg velger en ny retning
         private static int _walkingSpeed;
         private static int _currentSpeed;
         private static string _direction;
@@ -30,7 +32,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             _jumpHeight = jumpHeight;
             _attackType = attackType;
         }
-        internal static void Form1_KeyDown(object sender, KeyEventArgs e)
+        internal static void Form1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             {
                 if (e.KeyCode == Keys.A)
@@ -49,9 +51,10 @@ namespace KultSpillHahaHeheHohoDualYolo
                 {
                     _direction = "up";
                 }
+                //MovePlayerInDirection()
             }
         }
-        internal static void Form1_KeyUp(object sender, KeyEventArgs e)
+        internal static void Form1_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.KeyCode == Keys.A || 
                 e.KeyCode == Keys.D || 
@@ -60,6 +63,14 @@ namespace KultSpillHahaHeheHohoDualYolo
             {
                 _direction = null;
             }
+        }
+
+        public void IfKeyDown()
+        {
+            if (Keyboard.IsKeyDown(Key.A)) /*_direction = "left";*/ NewRectangle.Left -= _walkingSpeed;
+            if (Keyboard.IsKeyDown(Key.D)) /*_direction = "right";*/ NewRectangle.Left += _walkingSpeed;
+            if (Keyboard.IsKeyDown(Key.S)) /*_direction = "down";*/ NewRectangle.Top += _walkingSpeed;
+            if (Keyboard.IsKeyDown(Key.W)) /*_direction = "up";*/ NewRectangle.Top -= _walkingSpeed;
         }
         public void MovePlayerInDirection()
         {

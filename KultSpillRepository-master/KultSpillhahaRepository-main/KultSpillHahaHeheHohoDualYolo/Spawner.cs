@@ -10,7 +10,7 @@ namespace KultSpillHahaHeheHohoDualYolo
 {
     class Spawner
     {
-        public static List<Collision> allObjects = new List<Collision>();
+        public static List<Collision> allCollideables = new List<Collision>();
         public static List<EnemyRectangle> EnemyList { get; } = new List<EnemyRectangle>
         {
             new EnemyRectangle(Color.Aqua, 50,100,"down",0),
@@ -26,7 +26,16 @@ namespace KultSpillHahaHeheHohoDualYolo
         };
         public static List<Player> PlayerList { get; } = new List<Player>
         {
-            new Player(5, 8, 10, 0, "Chosen", 40, 60, Color.DarkMagenta, 150, 100, 0, null)
+            new Player(12, 8, 10, 0, "Chosen", 40, 60, Color.DarkMagenta, 150, 100, 0, null)
+        };
+        public static List<Coin> TestCoin { get; } = new List<Coin>
+        {
+            new Coin(15, 24, 30, 255),
+            new Coin(15, 24, 291, 2),
+            new Coin(15, 24, 1000, 49),
+            new Coin(15, 24, 756, 155),
+            new Coin(15, 24, 104, 390),
+            new Coin(15, 24, 145, 400),
         };
         public void CreateEnemies(Form1 formInstance)
         {
@@ -46,19 +55,27 @@ namespace KultSpillHahaHeheHohoDualYolo
         {
             PlayerList[0].SpawnRectangle(formInstance);
         }
-        public void addAllObjectsToList()
+
+        public void CreateTestCoin(Form1 formInstance)
+        {
+            foreach (var coin in TestCoin)
+            {
+                coin.SpawnRectangle(formInstance);
+            }
+        }
+        public void addAllCollideablesToList()
         {
             foreach (var enemy in EnemyList)
             {
-                allObjects.Add(enemy);
+                allCollideables.Add(enemy);
             }
             foreach (var platform in PlatformList)
             {
-                allObjects.Add(platform);
+                allCollideables.Add(platform);
             }
             foreach (var player in PlayerList)
             {
-                allObjects.Add(player);
+                allCollideables.Add(player);
                 //legg til brukervalgt player
             }
         }
