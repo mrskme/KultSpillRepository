@@ -1,0 +1,10 @@
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\bin\Debug\KultSpillHahaHeheHohoDualYolo.exe.config
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\bin\Debug\KultSpillHahaHeheHohoDualYolo.exe
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\bin\Debug\KultSpillHahaHeheHohoDualYolo.pdb
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\obj\Debug\KultSpillHahaHeheHohoDualYolo.csprojAssemblyReference.cache
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\obj\Debug\KultSpillHahaHeheHohoDualYolo.Form1.resources
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\obj\Debug\KultSpillHahaHeheHohoDualYolo.Properties.Resources.resources
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\obj\Debug\KultSpillHahaHeheHohoDualYolo.csproj.GenerateResource.cache
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\obj\Debug\KultSpillHahaHeheHohoDualYolo.csproj.CoreCompileInputs.cache
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\obj\Debug\KultSpillHahaHeheHohoDualYolo.exe
+C:\Users\mrskm\OneDrive\Skrivebord\KultSpillhahaRepository-main\KultSpillHahaHeheHohoDualYolo\obj\Debug\KultSpillHahaHeheHohoDualYolo.pdb
