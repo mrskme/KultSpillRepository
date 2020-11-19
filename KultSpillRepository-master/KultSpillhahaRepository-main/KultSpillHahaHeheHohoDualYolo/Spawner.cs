@@ -44,7 +44,11 @@ namespace KultSpillHahaHeheHohoDualYolo
                 int y = random.Next(0, screenHight - width);
                 int x = random.Next(0, screenWidth - height);
                 int Speed = random.Next(2, 25);
-                EnemyList.Add(new EnemyRectangle(Color.Red, x, y, direction, Speed, width, height));
+                int randomRed = random.Next(0, 255 + 1);
+                int randomgreen = random.Next(0, 255 + 1);
+                int randomblue = random.Next(0, 255 + 1);
+                Color randomColor = Color.FromArgb(randomRed,randomgreen,randomblue);
+                EnemyList.Add(new EnemyRectangle(randomColor, x, y, direction, Speed, width, height));
             }
         }
         public static List<Platform> PlatformList { get; } = new List<Platform>
@@ -53,7 +57,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         };
         public static List<Player> PlayerList { get; } = new List<Player>
         {
-            new Player(16, 8, 10, 0, "Chosen", 30, 30, Color.DodgerBlue, 524, 283 /*, 0, null*/)
+            new Player(16, 8, 10, 0, "Chosen", 30, 30, Color.FromArgb(18, 191, 2), 524, 283 /*, 0, null*/)
         };
         public static List<Coin> TestCoin { get; } = new List<Coin>
         {
