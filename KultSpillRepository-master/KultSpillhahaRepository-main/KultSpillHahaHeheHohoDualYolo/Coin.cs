@@ -20,15 +20,9 @@ namespace KultSpillHahaHeheHohoDualYolo
             coinLabel.Text = "Gold: ";
             coinLabel.ForeColor = Color.Gold;
             coinLabel.BackColor = Color.Transparent;
-            FontFamily fontFamily = new FontFamily(/*"Times New Roman"*/"Arial");
+            FontFamily fontFamily = new FontFamily("Times New Roman");
             Font font = new Font(fontFamily, 25);
             coinLabel.Font = font;
-            //foreach (var coin in TestCoin)
-            //{
-            //    int x = random.Next();
-            //    int y = random.Next();
-            //    coin.x = x;
-            //}
             //NewRectangle.SendToBack(); ???
         }
         public void MakeCoinInvisible()
@@ -39,15 +33,5 @@ namespace KultSpillHahaHeheHohoDualYolo
         {
             return NewRectangle.Visible;
         }
-        //private void RandomCoinLocations()
-        //{
-        //    Random random = new Random();
-        //    foreach (var coin in TestCoin)
-        //    {
-        //        int x = random.Next();
-        //        int y = random.Next();
-        //        coin.x = x;
-        //    }
-        //}
     }
 }

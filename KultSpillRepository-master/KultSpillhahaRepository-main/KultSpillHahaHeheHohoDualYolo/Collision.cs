@@ -27,7 +27,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             {
                 if (object1 != object2)
                 {
-                    var isCollision = object1.CheckForCollision(object2);
+                    var isCollision = object1.NewRectangle.Bounds.IntersectsWith(object2.NewRectangle.Bounds);
                     if (isCollision) return true;
                 }
             }
