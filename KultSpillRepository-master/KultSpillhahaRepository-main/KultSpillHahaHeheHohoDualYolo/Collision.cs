@@ -16,11 +16,11 @@ namespace KultSpillHahaHeheHohoDualYolo
         {
             _isImmovable = isImmovable;
         }
-        public bool CheckForCollision(Collision Object2)
-        {
-            var isColliding = NewRectangle.Bounds.IntersectsWith(Object2.NewRectangle.Bounds);
-            return isColliding;
-        }
+        //public bool CheckForCollision(Collision Object2)
+        //{
+        //    var isColliding = NewRectangle.Bounds.IntersectsWith(Object2.NewRectangle.Bounds);
+        //    return isColliding;
+        //}
         public bool IsObjectColliding(Collision object1)
         {
             foreach (Collision object2 in allCollideablesList)
@@ -31,6 +31,17 @@ namespace KultSpillHahaHeheHohoDualYolo
                     if (isCollision) return true;
                 }
             }
+            return false;
+        }
+
+        public bool isObjectColliding(Collision object1, Collision object2)
+        {
+            if (object1 != object2)
+            {
+                var isColission = object1.NewRectangle.Bounds.IntersectsWith(object2.NewRectangle.Bounds);
+                if (isColission) return true;
+            }
+
             return false;
         }
     }

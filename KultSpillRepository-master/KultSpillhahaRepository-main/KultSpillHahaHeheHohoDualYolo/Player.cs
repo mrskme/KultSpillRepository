@@ -14,8 +14,7 @@ namespace KultSpillHahaHeheHohoDualYolo
     {
         //private static List<Collision> allObjectList = Spawner.allCollideables;
         private List<Coin> coinList;
-
-        public Label coinLabel = Coin.coinLabel;
+        public static readonly Label coinLabel = new Label();
         private static int _walkingSpeed;
         private int _fallSpeed;
         private int _jumpHeight;
@@ -26,6 +25,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             string name, int width, int height, Color color, int x, int y)
             : base( name,  width,  height, color,  x,  y, false)
         {
+            MakeCoinLabel();
             _walkingSpeed = walkingSpeed;
             _fallSpeed = fallSpeed;
             _jumpHeight = jumpHeight;
@@ -37,12 +37,15 @@ namespace KultSpillHahaHeheHohoDualYolo
             coinList = Spawner.TestCoin;
             foreach (var coin in coinList)
             {
-                //Noen måter å sjekke om det er player som plukker opp coinen? 
-                if (IsObjectColliding(coin) && coin.IsCoinVisible())
+                if (isObjectColliding(this, coin) && coin.IsCoinVisible())
                 {
                     _coinCount++;
-                    coin.MakeCoinInvisible();
                     UpdateCoinLabel();
+                    coin.MakeCoinInvisible();
+                }
+                else if (IsObjectColliding(coin) && coin.IsCoinVisible())
+                {
+                    coin.MakeCoinInvisible();
                 }
             }
         }
@@ -55,7 +58,8 @@ namespace KultSpillHahaHeheHohoDualYolo
             var oldTop = NewRectangle.Top;
             var oldLeft = NewRectangle.Left;
 
-
+            //MovePlayerOmnidirectionally();
+            
             if (Keyboard.IsKeyDown(Key.A)) NewRectangle.Left -= _walkingSpeed;
             if (Keyboard.IsKeyDown(Key.D)) NewRectangle.Left += _walkingSpeed;
             if (Keyboard.IsKeyDown(Key.S)) NewRectangle.Top += _walkingSpeed;
@@ -67,20 +71,43 @@ namespace KultSpillHahaHeheHohoDualYolo
                 NewRectangle.Left = oldLeft;
             }
         }
-        //public void MovePlayerInDirection()
+
+        public void MakeCoinLabel()
+        {
+            coinLabel.Width = 150;
+            coinLabel.Height = 50;
+            coinLabel.Top = 6;
+            coinLabel.Left = 918;
+            coinLabel.Text = "Gold: ";
+            coinLabel.ForeColor = Color.Gold;
+            coinLabel.BackColor = Color.Transparent;
+            FontFamily fontFamily = new FontFamily("Times New Roman");
+            Font font = new Font(fontFamily, 25);
+            coinLabel.Font = font;
+            //coinLabel.SendToBack(); ???
+        }
+
+        //public void MovePlayerOmnidirectionally()
         //{
-        //    var oldTop = NewRectangle.Top;
-        //    var oldLeft = NewRectangle.Left;
-
-        //    if (_direction == "down") NewRectangle.Top += _walkingSpeed;
-        //    else if (_direction == "up") NewRectangle.Top -= _walkingSpeed;
-        //    else if (_direction == "left") NewRectangle.Left -= _walkingSpeed;
-        //    else if (_direction == "right") NewRectangle.Left += _walkingSpeed;
-
-        //    if (IsObjectColliding(this))
+        //    if (Keyboard.IsKeyDown(Key.D) && Keyboard.IsKeyDown(Key.W))
         //    {
-        //        NewRectangle.Top = oldTop;
-        //        NewRectangle.Left = oldLeft;
+        //        NewRectangle.Left += _walkingSpeed /2;
+        //        NewRectangle.Top -= _walkingSpeed /2;
+        //    }
+        //    if (Keyboard.IsKeyDown(Key.W) && Keyboard.IsKeyDown(Key.A))
+        //    {
+        //        NewRectangle.Top -= _walkingSpeed /2;
+        //        NewRectangle.Left -= _walkingSpeed /2;
+        //    }
+        //    if (Keyboard.IsKeyDown(Key.A) && Keyboard.IsKeyDown(Key.S))
+        //    {
+        //        NewRectangle.Left -= _walkingSpeed /2;
+        //        NewRectangle.Top += _walkingSpeed /2;
+        //    }
+        //    if (Keyboard.IsKeyDown(Key.S) && Keyboard.IsKeyDown(Key.D))
+        //    {
+        //        NewRectangle.Top += _walkingSpeed /2;
+        //        NewRectangle.Left += _walkingSpeed /2;
         //    }
         //}
     }

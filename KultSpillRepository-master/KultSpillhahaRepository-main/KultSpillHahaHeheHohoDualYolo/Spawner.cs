@@ -19,37 +19,41 @@ namespace KultSpillHahaHeheHohoDualYolo
 
         public static List<EnemyRectangle> EnemyList { get; } = new List<EnemyRectangle>
         {
-            new EnemyRectangle(Color.Aqua, 50, 100, "down", 15, 40, 40),
-            new EnemyRectangle(Color.Coral, 150, 200, "right", 23, 40, 40),
-            new EnemyRectangle(Color.Crimson, 350, 200, "down", 7, 40, 40),
-            new EnemyRectangle(Color.BlueViolet, 350, 400, "up", 10, 40, 40),
-            new EnemyRectangle(Color.Chartreuse, 550, 200, "right", 9, 40, 40),
-            new EnemyRectangle(Color.BurlyWood, 550, 340, "left", 4, 40, 40),
-            new EnemyRectangle(Color.CadetBlue, 42, 400, "left", 10, 40, 40),
-            new EnemyRectangle(Color.DeepPink, 42, 200, "up", 7, 40, 40),
+            //new EnemyRectangle(Color.Aqua, 50, 100, "down", 16, 40, 40),
+            //new EnemyRectangle(Color.Coral, 150, 200, "right", 23, 40, 40),
+            //new EnemyRectangle(Color.Crimson, 350, 200, "down", 8, 40, 40),
+            //new EnemyRectangle(Color.BlueViolet, 350, 400, "up", 11, 40, 40),
+            //new EnemyRectangle(Color.Chartreuse, 550, 200, "right", 10, 40, 40),
+            //new EnemyRectangle(Color.BurlyWood, 550, 340, "left", 5, 40, 40),
+            //new EnemyRectangle(Color.CadetBlue, 42, 630, "left", 11, 40, 40),
+            //new EnemyRectangle(Color.DeepPink, 42, 200, "left", 8, 40, 40),
+            //new EnemyRectangle(Color.Gold, 42, 398, "down", 15, 40, 40),
+            //new EnemyRectangle(Color.Tomato, 90, 500, "right", 12, 40, 40),
         };
         private void MakeRandomEnemies()
         {
-            //var enemyCount = 20;
-            //for (var i = 0; i < enemyCount; i++)
-            //{
-            //    string direction = null;
-            //    var randomDirection = random.Next(0, 4);
-            //    if (randomDirection == 0) direction = "up";
-            //    else if (randomDirection == 1) direction = "down";
-            //    else if (randomDirection == 2) direction = "left";
-            //    else if (randomDirection == 3) direction = "right";
-            //    int width = random.Next(15, 50);
-            //    int height = random.Next(15, 50);
-            //    int y = random.Next(0, screenHight - width);
-            //    int x = random.Next(0, screenWidth - height);
-            //    int Speed = random.Next(2, 25);
-            //    int randomRed = random.Next(0, 255 + 1);
-            //    int randomGreen = random.Next(0, 255 + 1);
-            //    int randomBlue = random.Next(0, 255 + 1);
-            //    Color randomColor = Color.FromArgb(randomRed, randomGreen, randomBlue);
-            //    EnemyList.Add(new EnemyRectangle(randomColor, x, y, direction, Speed, width, height));
-            //}
+            var enemyCount = 15;
+            for (var i = 0; i < enemyCount; i++)
+            {
+                string direction = null;
+                var randomDirection = random.Next(0, 4);
+                if (randomDirection == 0) direction = "up";
+                else if (randomDirection == 1) direction = "down";
+                else if (randomDirection == 2) direction = "left";
+                else if (randomDirection == 3) direction = "right";
+                int width = random.Next(20, 50);
+                int height = random.Next(20, 50);
+                int y = random.Next(0, screenHight - width);
+                int x = random.Next(0, screenWidth - height);
+                int Speed = random.Next(2, 25);
+                //int Speed = 20;
+                int randomRed = random.Next(0, 255 + 1);
+                int randomGreen = random.Next(0, 255 + 1);
+                int randomBlue = random.Next(0, 255 + 1);
+                Color color = Color.Red;
+                Color randomColor = Color.FromArgb(randomRed, randomGreen, randomBlue);
+                EnemyList.Add(new EnemyRectangle(randomColor, x, y, direction, Speed, width, height));
+            }
         }
         public static List<Platform> PlatformList { get; } = new List<Platform>
         {
@@ -65,7 +69,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         };
         private void MakeCoins()
         {
-            var coinAmount = 30;
+            var coinAmount = 70;
             var SpaceBetweenCoinAndWall = 6;
             for (var i = 0; i < coinAmount; i++)
             {
@@ -82,11 +86,12 @@ namespace KultSpillHahaHeheHohoDualYolo
             new Platform("bottomWall", 1057, 0, Color.Blue,0, 567),
         };
 
-        public void SpawnEverythingAndAddCollideablesToCollideableList(Form1 formInstance)
+        public void SpawnEverythingAndAddAllCollideablesToCollideablesList(Form1 formInstance)
         {
+            PlayerList[0].SpawnRectangle(formInstance);
             MakeCoins();
             MakeRandomEnemies();
-            PlayerList[0].SpawnRectangle(formInstance);
+            
             allCollideables.Add(PlayerList[0]);
 
             foreach (var enemy in EnemyList)

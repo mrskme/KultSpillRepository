@@ -22,14 +22,14 @@ namespace KultSpillHahaHeheHohoDualYolo
         }
         private void LoadGame()
         {
-            this.Controls.Add(Coin.coinLabel);
-            spawner.SpawnEverythingAndAddCollideablesToCollideableList(this);
+            
+            spawner.SpawnEverythingAndAddAllCollideablesToCollideablesList(this);
+            this.Controls.Add(Player.coinLabel);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             MoveEverything();
             player.grabACoin();
-            
         }
         public void MoveEverything()
         {
@@ -38,6 +38,21 @@ namespace KultSpillHahaHeheHohoDualYolo
                 enemyList[i].MoveEnemyInDirection();
             }
             player.MovePlayer();
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            GetMousePositionWindowsForms();
+        }
+        public static Point GetMousePositionWindowsForms()
+        {
+            var point = Control.MousePosition;
+            return new Point(point.X, point.Y);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
