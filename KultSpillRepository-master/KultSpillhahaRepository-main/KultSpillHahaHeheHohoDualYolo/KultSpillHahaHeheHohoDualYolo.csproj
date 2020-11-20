@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Coin.cs" />
     <Compile Include="Collision.cs" />
+    <Compile Include="GameLevel.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Spawner.cs" />

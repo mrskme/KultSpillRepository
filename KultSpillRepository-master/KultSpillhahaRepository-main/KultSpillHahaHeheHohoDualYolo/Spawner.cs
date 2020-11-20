@@ -30,7 +30,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             //new EnemyRectangle(Color.Gold, 42, 398, "down", 15, 40, 40),
             //new EnemyRectangle(Color.Tomato, 90, 500, "right", 12, 40, 40),
         };
-        private void MakeRandomEnemies()
+        private void CreateRandomEnemies()
         {
             var enemyCount = 15;
             for (var i = 0; i < enemyCount; i++)
@@ -63,11 +63,22 @@ namespace KultSpillHahaHeheHohoDualYolo
         {
             new Player(16, 8, 10, 0, "Chosen", 30, 30, Color.FromArgb(18, 191, 2), 524, 283 /*, 0, null*/)
         };
-        public static List<Coin> TestCoin { get; } = new List<Coin>
+        public static List<Coin> CoinList { get; } = new List<Coin>
         {
-            //new Coin(50, 233),
         };
-        private void MakeCoins()
+        public static List<GameLevel> GameStageList = new List<GameLevel>
+        {
+            new GameLevel(PlayerList[0], FirstLevelEnemies, FirstLevelPlatforms, firstLevelCoins)
+        };
+        public static List<EnemyRectangle> FirstLevelEnemies = new List<EnemyRectangle>
+        {
+
+        };
+        public static List<Platform> FirstLevelPlatforms = new List<Platform>
+        {
+
+        };
+        private void CreateRandomCoins()
         {
             var coinAmount = 70;
             var SpaceBetweenCoinAndWall = 6;
@@ -75,7 +86,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             {
                 var x = random.Next(0 ,screenWidth - 17 - SpaceBetweenCoinAndWall);
                 var y = random.Next(0, screenHight - 24 - SpaceBetweenCoinAndWall);
-                TestCoin.Add(new Coin(x, y));
+                CoinList.Add(new Coin(x, y));
             }
         }
         public static List<Platform> InvisibleWallsList = new List<Platform>
@@ -89,8 +100,8 @@ namespace KultSpillHahaHeheHohoDualYolo
         public void SpawnEverythingAndAddAllCollideablesToCollideablesList(Form1 formInstance)
         {
             PlayerList[0].SpawnRectangle(formInstance);
-            MakeCoins();
-            MakeRandomEnemies();
+            CreateRandomCoins();
+            CreateRandomEnemies();
             
             allCollideables.Add(PlayerList[0]);
 
@@ -109,7 +120,7 @@ namespace KultSpillHahaHeheHohoDualYolo
                 wall.SpawnRectangle(formInstance);
                 allCollideables.Add(wall);
             }
-            foreach (var coin in TestCoin)
+            foreach (var coin in CoinList)
             {
                 coin.SpawnRectangle(formInstance);
             }
