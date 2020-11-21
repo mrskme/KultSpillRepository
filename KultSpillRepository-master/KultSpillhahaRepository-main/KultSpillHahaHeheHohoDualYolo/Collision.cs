@@ -11,7 +11,7 @@ namespace KultSpillHahaHeheHohoDualYolo
     {
         private bool _isImmovable;
         protected PictureBox NewRectangle { get; } = new PictureBox();
-        private readonly List<Collision> allCollideablesList = Spawner.allCollideables;
+        private readonly List<Collision> allCollideablesList = GameLevel.allCollideables;
         public Collision(bool isImmovable)
         {
             _isImmovable = isImmovable;

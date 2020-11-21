@@ -34,7 +34,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         }
         public void grabACoin()
         {
-            coinList = Spawner.TestCoin;
+            coinList = Spawner.CoinList;
             foreach (var coin in coinList)
             {
                 if (isObjectColliding(this, coin) && coin.IsCoinVisible())

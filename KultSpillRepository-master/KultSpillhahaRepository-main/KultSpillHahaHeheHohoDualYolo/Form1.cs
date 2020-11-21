@@ -15,17 +15,23 @@ namespace KultSpillHahaHeheHohoDualYolo
         Spawner spawner = new Spawner();
         private List<EnemyRectangle> enemyList = Spawner.EnemyList;
         private Player player = Spawner.PlayerList[0];
+        private List<Player> playerList = Spawner.PlayerList;
+        private List<GameLevel> GameStageList = Spawner.GameStageList;
         public Form1()
         {
             InitializeComponent();
-            LoadGame();
         }
-        private void LoadGame()
+        private void StartGame(Player player)
         {
-            
-            spawner.SpawnEverythingAndAddAllCollideablesToCollideablesList(this);
+            Controls.Remove(label1);
+            Controls.Remove(button1);
+            Controls.Remove(button2);
+            Controls.Remove(button3);
+            //spawner.SpawnEverythingAndAddAllCollideablesToCollideablesList(this);
+            GameStageList[0].SpawnGameLevels(this, player);
             this.Controls.Add(Player.coinLabel);
         }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             MoveEverything();
@@ -40,19 +46,29 @@ namespace KultSpillHahaHeheHohoDualYolo
             player.MovePlayer();
         }
 
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            GetMousePositionWindowsForms();
-        }
-        public static Point GetMousePositionWindowsForms()
-        {
-            var point = Control.MousePosition;
-            return new Point(point.X, point.Y);
+            StartGame(playerList[0]);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            StartGame(playerList[1]);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            StartGame(playerList[2]);
+        }
+
+        //private void Form1_MouseDown(object sender, MouseEventArgs e)
+        //{
+        //    GetMousePositionWindowsForms();
+        //}
+        //public static Point GetMousePositionWindowsForms()
+        //{
+        //    var point = Control.MousePosition;
+        //    return new Point(point.X, point.Y);
+        //}
     }
 }
