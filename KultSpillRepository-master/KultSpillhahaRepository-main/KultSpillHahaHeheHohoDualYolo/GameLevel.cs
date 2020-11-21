@@ -8,23 +8,22 @@ namespace KultSpillHahaHeheHohoDualYolo
 {
     class GameLevel
     {
-        //private Player _player;
-        private static  List<EnemyRectangle> _enemies;
-        private static List<Platform> _platforms;
-        private static List<Coin> _coins;
+        public static Player _player;
+        public static  List<EnemyRectangle> _enemies;
+        public static List<Platform> _platforms;
+        public static List<Coin> _coins;
         private static List<Platform> _invisibleWalls;
         public static List<Collision> allCollideables = new List<Collision>();
 
 
-        public GameLevel(/*Player player,*/ List<EnemyRectangle> enemies, List<Platform> platforms, List<Coin> coins, List<Platform> invisibleWalls)
+        public GameLevel(Player player, List<EnemyRectangle> enemies, List<Platform> platforms, List<Coin> coins, List<Platform> invisibleWalls)
         {
-            //_player = player;
+            _player = player;
             _enemies = enemies;
             _platforms = platforms;
             _coins = coins;
             _invisibleWalls = invisibleWalls;
         }
-
         public void SpawnGameLevels(Form1 formInstance, Player player)
         {
             //er det noe bedre måter enn å gjøre alt static for å kjøre denne i form1?
@@ -35,7 +34,6 @@ namespace KultSpillHahaHeheHohoDualYolo
             {
                 enemy.SpawnRectangle(formInstance);
                 allCollideables.Add(enemy);
-                
             }
 
             foreach (var platform in _platforms)
@@ -46,7 +44,6 @@ namespace KultSpillHahaHeheHohoDualYolo
 
             foreach (var coin in _coins)
             {
-                allCollideables.Add(coin);
                 coin.SpawnRectangle(formInstance);
             }
 

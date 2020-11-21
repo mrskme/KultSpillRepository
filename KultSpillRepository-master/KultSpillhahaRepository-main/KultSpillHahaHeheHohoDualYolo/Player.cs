@@ -30,15 +30,15 @@ namespace KultSpillHahaHeheHohoDualYolo
             _fallSpeed = fallSpeed;
             _jumpHeight = jumpHeight;
             _attackType = attackType;
-            //NewRectangle.BringToFront(); ???
         }
         public void grabACoin()
         {
-            coinList = Spawner.CoinList;
+            coinList = GameLevel._coins;
             foreach (var coin in coinList)
             {
                 if (isObjectColliding(this, coin) && coin.IsCoinVisible())
                 {
+                    //hvorfor tror den at player intersecter med coin? 
                     _coinCount++;
                     UpdateCoinLabel();
                     coin.MakeCoinInvisible();
@@ -58,8 +58,6 @@ namespace KultSpillHahaHeheHohoDualYolo
             var oldTop = NewRectangle.Top;
             var oldLeft = NewRectangle.Left;
 
-            //MovePlayerOmnidirectionally();
-            
             if (Keyboard.IsKeyDown(Key.A)) NewRectangle.Left -= _walkingSpeed;
             if (Keyboard.IsKeyDown(Key.D)) NewRectangle.Left += _walkingSpeed;
             if (Keyboard.IsKeyDown(Key.S)) NewRectangle.Top += _walkingSpeed;
@@ -84,31 +82,6 @@ namespace KultSpillHahaHeheHohoDualYolo
             FontFamily fontFamily = new FontFamily("Times New Roman");
             Font font = new Font(fontFamily, 25);
             coinLabel.Font = font;
-            //coinLabel.SendToBack(); ???
         }
-
-        //public void MovePlayerOmnidirectionally()
-        //{
-        //    if (Keyboard.IsKeyDown(Key.D) && Keyboard.IsKeyDown(Key.W))
-        //    {
-        //        NewRectangle.Left += _walkingSpeed /2;
-        //        NewRectangle.Top -= _walkingSpeed /2;
-        //    }
-        //    if (Keyboard.IsKeyDown(Key.W) && Keyboard.IsKeyDown(Key.A))
-        //    {
-        //        NewRectangle.Top -= _walkingSpeed /2;
-        //        NewRectangle.Left -= _walkingSpeed /2;
-        //    }
-        //    if (Keyboard.IsKeyDown(Key.A) && Keyboard.IsKeyDown(Key.S))
-        //    {
-        //        NewRectangle.Left -= _walkingSpeed /2;
-        //        NewRectangle.Top += _walkingSpeed /2;
-        //    }
-        //    if (Keyboard.IsKeyDown(Key.S) && Keyboard.IsKeyDown(Key.D))
-        //    {
-        //        NewRectangle.Top += _walkingSpeed /2;
-        //        NewRectangle.Left += _walkingSpeed /2;
-        //    }
-        //}
     }
 }

@@ -19,16 +19,16 @@ namespace KultSpillHahaHeheHohoDualYolo
 
         public static List<EnemyRectangle> EnemyList { get; } = new List<EnemyRectangle>
         {
-            new EnemyRectangle(Color.Aqua, 50, 100, "down", 16, 40, 40),
-            new EnemyRectangle(Color.Coral, 150, 200, "right", 23, 40, 40),
-            new EnemyRectangle(Color.Crimson, 350, 200, "down", 8, 40, 40),
-            new EnemyRectangle(Color.BlueViolet, 350, 400, "up", 11, 40, 40),
-            new EnemyRectangle(Color.Chartreuse, 550, 200, "right", 10, 40, 40),
-            new EnemyRectangle(Color.BurlyWood, 550, 340, "left", 5, 40, 40),
-            new EnemyRectangle(Color.CadetBlue, 42, 630, "left", 11, 40, 40),
-            new EnemyRectangle(Color.DeepPink, 42, 200, "left", 8, 40, 40),
-            new EnemyRectangle(Color.Gold, 42, 398, "down", 15, 40, 40),
-            new EnemyRectangle(Color.Tomato, 90, 500, "right", 12, 40, 40),
+            //new EnemyRectangle(Color.Aqua, 50, 100, "down", 16, 40, 40),
+            //new EnemyRectangle(Color.Coral, 150, 200, "right", 23, 40, 40),
+            //new EnemyRectangle(Color.Crimson, 350, 200, "down", 8, 40, 40),
+            //new EnemyRectangle(Color.BlueViolet, 350, 400, "up", 11, 40, 40),
+            //new EnemyRectangle(Color.Chartreuse, 550, 200, "right", 10, 40, 40),
+            //new EnemyRectangle(Color.BurlyWood, 550, 340, "left", 5, 40, 40),
+            //new EnemyRectangle(Color.CadetBlue, 42, 630, "left", 11, 40, 40),
+            //new EnemyRectangle(Color.DeepPink, 42, 200, "left", 8, 40, 40),
+            //new EnemyRectangle(Color.Gold, 42, 398, "down", 15, 40, 40),
+            //new EnemyRectangle(Color.Tomato, 90, 500, "right", 12, 40, 40),
         };
         private void CreateRandomEnemies()
         {
@@ -61,16 +61,12 @@ namespace KultSpillHahaHeheHohoDualYolo
         };
         public static List<Player> PlayerList { get; } = new List<Player>
         {
-            new Player(16, 8, 10, 0, "Player", 30, 30, Color.FromArgb(18, 191, 2), 524, 283),
-            new Player(16, 8, 10, 0, "Player", 30, 30, Color.FromArgb(18, 191, 2), 524, 283),
-            new Player(16, 8, 10, 0, "Player", 30, 30, Color.FromArgb(18, 191, 2), 524, 283),
+            new Player(16, 8, 10, 0, "Player", 40, 40, Color.FromArgb(18, 191, 2), 524, 283),
+            new Player(20, 8, 10, 0, "Player", 25, 25, Color.FromArgb(18, 191, 2), 524, 283),
+            new Player(13, 8, 10, 0, "Player", 60, 60, Color.FromArgb(18, 191, 2), 524, 283),
         };
         public static List<Coin> CoinList { get; } = new List<Coin>
         {
-        };
-        public static List<GameLevel> GameStageList = new List<GameLevel>
-        {
-            new GameLevel(/*PlayerList[0],*/ FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(5), InvisibleWallsList)
         };
         public static List<EnemyRectangle> FirstLevelEnemies = new List<EnemyRectangle>
         {
@@ -87,12 +83,16 @@ namespace KultSpillHahaHeheHohoDualYolo
             var SpaceBetweenCoinAndWall = 6;
             for (var i = 0; i < coinAmount; i++)
             {
-                var x = random.Next(0 ,screenWidth - 17 - SpaceBetweenCoinAndWall);
+                var x = random.Next(0, screenWidth - 17 - SpaceBetweenCoinAndWall);
                 var y = random.Next(0, screenHeight - 24 - SpaceBetweenCoinAndWall);
                 CoinList.Add(new Coin(x, y));
             }
 
             return CoinList;
+        }
+        public static Player ChosePlayer(Player Player)
+        {
+            return Player;
         }
         public static List<Platform> InvisibleWallsList = new List<Platform>
         {
@@ -100,6 +100,10 @@ namespace KultSpillHahaHeheHohoDualYolo
             new Platform("rightWall", 0, screenHeight, Color.Blue,screenWidth,0),
             new Platform("topWall", screenWidth, 0, Color.Blue, 0 ,0 ),
             new Platform("bottomWall", screenWidth, 0, Color.Blue,0, screenHeight),
+        };
+        public static List<GameLevel> GameLevelsList = new List<GameLevel>
+        {
+            new GameLevel(/*Form1.chosenPlayer*/Form1.GetChosenPlayer(), FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(5), InvisibleWallsList)
         };
 
         public void SpawnEverythingAndAddAllCollideablesToCollideablesList(Form1 formInstance)

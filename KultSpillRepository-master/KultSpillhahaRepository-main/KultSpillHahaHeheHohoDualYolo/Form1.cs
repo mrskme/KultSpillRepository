@@ -13,29 +13,30 @@ namespace KultSpillHahaHeheHohoDualYolo
     public partial class Form1 : Form
     {
         Spawner spawner = new Spawner();
-        private List<EnemyRectangle> enemyList = Spawner.EnemyList;
-        private Player player = Spawner.PlayerList[0];
+        //private Player player = Spawner.PlayerList[0];
         private List<Player> playerList = Spawner.PlayerList;
-        private List<GameLevel> GameStageList = Spawner.GameStageList;
+        private List<GameLevel> GameStageList = Spawner.GameLevelsList;
+        private List<EnemyRectangle> enemyList = GameLevel._enemies;
+        //private Player chosenPlayer = GameLevel._player;
+        private static Player chosenPlayer;
         public Form1()
         {
             InitializeComponent();
         }
-        private void StartGame(Player player)
+        private void StartGame()
         {
             Controls.Remove(label1);
             Controls.Remove(button1);
             Controls.Remove(button2);
             Controls.Remove(button3);
             //spawner.SpawnEverythingAndAddAllCollideablesToCollideablesList(this);
-            GameStageList[0].SpawnGameLevels(this, player);
+            GameStageList[0].SpawnGameLevels(this, chosenPlayer);
             this.Controls.Add(Player.coinLabel);
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             MoveEverything();
-            player.grabACoin();
+            chosenPlayer.grabACoin();
         }
         public void MoveEverything()
         {
@@ -43,23 +44,36 @@ namespace KultSpillHahaHeheHohoDualYolo
             {
                 enemyList[i].MoveEnemyInDirection();
             }
-            player.MovePlayer();
+            chosenPlayer.MovePlayer();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            StartGame(playerList[0]);
+            //StartGame(playerList[0]);
+            //Spawner.ChosePlayer(playerList[0]);
+            chosenPlayer = playerList[0];
+            StartGame();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            StartGame(playerList[1]);
+            //StartGame(playerList[1]);
+            chosenPlayer = playerList[1];
+            StartGame();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            StartGame(playerList[2]);
+            //StartGame(playerList[2]);
+            //return playerList[2];
+            chosenPlayer = playerList[2];
+            StartGame();
         }
+        private Player GetChosenPlayer()
+        {
+            return chosenPlayer;
+        }
+        //private Player CHosePlayer(Player player)
+        //{
+        //    return player;
+        //}
 
         //private void Form1_MouseDown(object sender, MouseEventArgs e)
         //{
