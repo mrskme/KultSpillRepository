@@ -24,7 +24,8 @@ namespace KultSpillHahaHeheHohoDualYolo
             label.Text = text;
             //label.BackColor = backColor;
             //_backColor = backColor;
-            label.BackColor = Color.Gold;
+            label.ForeColor = Color.Gold;
+            //label.BackColor = Color.Gold;
         }
 
         public void SpawnLabel(Form1 formInstance)

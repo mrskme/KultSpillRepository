@@ -14,7 +14,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         //private Color _borderColor;
         private int _x;
         private int _y;
-        public UpgradeDisplayerRectangle(Color backColor,/* Color borderColor,*/ int x, int y) : base("UpgradeRectangle", 30, 45, backColor, x, y, true)
+        public UpgradeDisplayerRectangle(Color backColor,/* Color borderColor,*/ int x, int y) : base("UpgradeRectangle", 25, 35, backColor, x, y, true)
         {
             _backColor = backColor;
             //_borderColor = borderColor;
@@ -22,10 +22,9 @@ namespace KultSpillHahaHeheHohoDualYolo
             _y = y;
             NewRectangle.BorderStyle = BorderStyle.FixedSingle;
         }
-
         public void ColorRectangle()
         {
-            NewRectangle.BackColor = _backColor;
+            NewRectangle.BackColor = Color.Gold;
         }
     }
 }

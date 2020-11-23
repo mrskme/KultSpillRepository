@@ -51,9 +51,10 @@ namespace KultSpillHahaHeheHohoDualYolo
                 }
             }
             //return CoinsGrabbed;
-            if (CoinsGrabbed == /*coinList.Count*/1)
+            if (CoinsGrabbed == coinList.Count)
             {
                 GameLevel.ShowUpgradePanel(formInstance);
+
             }
         }
         //public static bool isCoinListEmpty()
@@ -82,8 +83,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         }
         public void MakeCoinLabel()
         {
-            coinLabel.Width = 150;
-            coinLabel.Height = 50;
+            coinLabel.AutoSize = true;
             coinLabel.Top = 6;
             coinLabel.Left = 918;
             coinLabel.Text = "Gold: 0";
@@ -94,9 +94,17 @@ namespace KultSpillHahaHeheHohoDualYolo
             coinLabel.Font = font;
         }
 
-        public void UpgradePlayer(string attribute)
+        public void PayUpgradePrice()
         {
-            if (attribute == "walkingSpeed") _walkingSpeed++;
+            _PlayerOwnedCoins--;
+        }
+
+        public void UpgradePlayer(object sender, EventArgs e)
+        {
+            GameLevel.speedUpgradeRectangles[0].ColorRectangle();
+            UpdateCoinLabel();
+            _walkingSpeed++;
+
         }
     }
 }
