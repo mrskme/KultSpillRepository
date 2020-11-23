@@ -23,16 +23,22 @@ namespace KultSpillHahaHeheHohoDualYolo
             _x = x;
             _y = y;
             NewRectangle.BackColor = color;
-            //newRectangle.Width = _width;
-            //newRectangle.Height = _height;
-        }
-        public void SpawnRectangle(Form formInstance)
-        {
             NewRectangle.Name = _name;
             NewRectangle.Width = _width;
             NewRectangle.Height = _height;
-            NewRectangle.Location = new Point(_x,_y);
+            NewRectangle.Location = new Point(_x, _y);
+        }
+        public void SpawnRectangle(Form formInstance)
+        {
+            //NewRectangle.Name = _name;
+            //NewRectangle.Width = _width;
+            //NewRectangle.Height = _height;
+            //NewRectangle.Location = new Point(_x,_y);
             formInstance.Controls.Add(NewRectangle);
+        }
+        public void DespawnRectangle(Form1 formInstance)
+        {
+            formInstance.Controls.Remove(NewRectangle);
         }
     }
 }

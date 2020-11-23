@@ -12,7 +12,6 @@ namespace KultSpillHahaHeheHohoDualYolo
 {
     class Player : Rectangle1
     {
-        //private static List<Collision> allObjectList = Spawner.allCollideables;
         private List<Coin> coinList;
         public static readonly Label coinLabel = new Label();
         private static int _walkingSpeed;
@@ -31,24 +30,29 @@ namespace KultSpillHahaHeheHohoDualYolo
             _jumpHeight = jumpHeight;
             _attackType = attackType;
         }
-        public void grabACoin()
+        public void grabACoin(Form1 formInstance)
         {
             coinList = GameLevel._coins;
             foreach (var coin in coinList)
             {
                 if (isObjectColliding(this, coin) && coin.IsCoinVisible())
                 {
-                    //hvorfor tror den at player intersecter med coin? 
                     _coinCount++;
                     UpdateCoinLabel();
-                    coin.MakeCoinInvisible();
+                    coin.DespawnCoin(formInstance);
                 }
                 else if (IsObjectColliding(coin) && coin.IsCoinVisible())
                 {
-                    coin.MakeCoinInvisible();
+                    coin.DespawnCoin(formInstance);
                 }
+                //modifiableCoinList.Remove(coin);
             }
         }
+
+        //public static bool isCoinListEmpty()
+        //{
+        //    return modifiableCoinList.Count == 0;
+        //}
         public void UpdateCoinLabel()
         {
             coinLabel.Text = $"Gold: {_coinCount}";
@@ -76,7 +80,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             coinLabel.Height = 50;
             coinLabel.Top = 6;
             coinLabel.Left = 918;
-            coinLabel.Text = "Gold: ";
+            coinLabel.Text = "Gold: 0";
             coinLabel.ForeColor = Color.Gold;
             coinLabel.BackColor = Color.Transparent;
             FontFamily fontFamily = new FontFamily("Times New Roman");

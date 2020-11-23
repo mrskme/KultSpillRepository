@@ -13,9 +13,10 @@ namespace KultSpillHahaHeheHohoDualYolo
         public Coin( int x, int y) :base("coin",17, 24, Color.Gold, x,y, true)
         {
         }
-        public void MakeCoinInvisible()
+        public void DespawnCoin(Form1 formInstance)
         {
             NewRectangle.Visible = false;
+            formInstance.Controls.Remove(NewRectangle);
         }
         public bool IsCoinVisible()
         {

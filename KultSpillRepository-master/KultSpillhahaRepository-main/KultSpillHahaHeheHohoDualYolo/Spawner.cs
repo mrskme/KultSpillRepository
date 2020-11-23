@@ -61,18 +61,18 @@ namespace KultSpillHahaHeheHohoDualYolo
         };
         public static List<Player> PlayerList { get; } = new List<Player>
         {
-            new Player(16, 8, 10, 0, "Player", 40, 40, Color.FromArgb(18, 191, 2), 524, 283),
-            new Player(20, 8, 10, 0, "Player", 25, 25, Color.FromArgb(18, 191, 2), 524, 283),
-            new Player(13, 8, 10, 0, "Player", 60, 60, Color.FromArgb(18, 191, 2), 524, 283),
+            new Player(18, 8, 10, 0, "Player", 40, 40, Color.FromArgb(18, 191, 2), screenWidth/2, screenHeight/2+-50),
+            new Player(25, 8, 10, 0, "Player", 20, 20, Color.FromArgb(18, 191, 2), screenWidth/2, screenHeight/2+-50),
+            new Player(12, 8, 10, 0, "Player", 70, 70, Color.FromArgb(18, 191, 2), screenWidth/2, screenHeight/2+-50),
         };
         public static List<Coin> CoinList { get; } = new List<Coin>
         {
         };
         public static List<EnemyRectangle> FirstLevelEnemies = new List<EnemyRectangle>
         {
-            new EnemyRectangle(Color.Aqua, 50, 100, "down", 16, 40, 40),
-            new EnemyRectangle(Color.Coral, 150, 200, "right", 23, 40, 40),
-            new EnemyRectangle(Color.Crimson, 350, 200, "down", 8, 40, 40),
+            new EnemyRectangle(Color.Aqua, 50, 100, "down", 16, 40, 40, 1000),
+            new EnemyRectangle(Color.Coral, 150, 200, "right", 23, 40, 40,500),
+            new EnemyRectangle(Color.Crimson, 350, 200, "down", 8, 40, 40, 800),
         };
         public static List<Platform> FirstLevelPlatforms = new List<Platform>
         {
@@ -103,9 +103,8 @@ namespace KultSpillHahaHeheHohoDualYolo
         };
         public static List<GameLevel> GameLevelsList = new List<GameLevel>
         {
-            new GameLevel(/*Form1.chosenPlayer*/Form1.GetChosenPlayer(), FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(5), InvisibleWallsList)
+            new GameLevel(/*Form1.chosenPlayer*//*Form1.GetChosenPlayer()*/PlayerList[0], FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(8), InvisibleWallsList),
         };
-
         public void SpawnEverythingAndAddAllCollideablesToCollideablesList(Form1 formInstance)
         {
             //PlayerList[0].SpawnRectangle(formInstance);
@@ -134,9 +133,5 @@ namespace KultSpillHahaHeheHohoDualYolo
             //    coin.SpawnRectangle(formInstance);
             //}
         }
-        //public void SpawnEnemiesAndAddThemToCollideableList() bedre eller værre?
-        //{
-
-        //}
     }
 }

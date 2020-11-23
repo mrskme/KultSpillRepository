@@ -24,11 +24,11 @@ namespace KultSpillHahaHeheHohoDualYolo
             _coins = coins;
             _invisibleWalls = invisibleWalls;
         }
-        public void SpawnGameLevels(Form1 formInstance, Player player)
+        public void SpawnGameLevelAndAddToCollideablesList(Form1 formInstance/*, Player player*/)
         {
             //er det noe bedre måter enn å gjøre alt static for å kjøre denne i form1?
-            allCollideables.Add(player);
-            player.SpawnRectangle(formInstance);
+            allCollideables.Add(_player);
+            _player.SpawnRectangle(formInstance);
 
             foreach (var enemy in _enemies)
             {
@@ -51,6 +51,36 @@ namespace KultSpillHahaHeheHohoDualYolo
             {
                 allCollideables.Add(invisibleWall);
                 invisibleWall.SpawnRectangle(formInstance);
+            }
+        }
+
+        public static void ShowUpgradePanel(Form1 formInstance)
+        { 
+            allCollideables.Clear();
+            DespawnAllObjects(formInstance);
+        }
+
+        private static void DespawnAllObjects(Form1 formInstance)
+        {
+            //_player.DespawnRectangle(formInstance);
+            foreach (var enemy in _enemies)
+            {
+                enemy.DespawnRectangle(formInstance);
+            }
+
+            foreach (var platform in _platforms)
+            {
+                platform.DespawnRectangle(formInstance);
+            }
+
+            foreach (var coin in _coins)
+            {
+                coin.DespawnRectangle(formInstance);
+            }
+
+            foreach (var invisibleWall in _invisibleWalls)
+            {
+                invisibleWall.DespawnRectangle(formInstance);
             }
         }
     }
