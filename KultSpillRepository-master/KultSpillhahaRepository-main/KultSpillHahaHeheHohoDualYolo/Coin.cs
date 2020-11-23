@@ -12,6 +12,7 @@ namespace KultSpillHahaHeheHohoDualYolo
     {
         public Coin( int x, int y) :base("coin",17, 24, Color.Gold, x,y, true)
         {
+            //bronze, sølv og gullcoins?
         }
         public void DespawnCoin(Form1 formInstance)
         {

@@ -88,10 +88,6 @@ namespace KultSpillHahaHeheHohoDualYolo
 
             return CoinList;
         }
-        //public static Player ChosePlayer(Player Player)
-        //{
-        //    return Player;
-        //}
         public static List<Platform> InvisibleWallsList = new List<Platform>
         {
             new Platform("leftWall", 0, screenHeight, Color.Blue, 0, 0),
@@ -99,45 +95,13 @@ namespace KultSpillHahaHeheHohoDualYolo
             new Platform("topWall", screenWidth, 0, Color.Blue, 0, 0),
             new Platform("bottomWall", screenWidth, 0, Color.Blue, 0, screenHeight),
         };
-        //public static List<GameLevel> GameLevelsList = new List<GameLevel>
-        //{
-        //    new GameLevel(/*Form1.chosenPlayer*//*Form1.GetChosenPlayer()*/Form1.GetChosenPlayer(), FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(8), InvisibleWallsList),
-        //};
-        public static List<GameLevel> GameLevelsList = new List<GameLevel>();
+        public static List<GameLevel> GameLevelsList;
         public static void GetPlayer(Player ChosenPlayer)
         {
             GameLevelsList = new List<GameLevel>
             {
-                new GameLevel(ChosenPlayer, FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(8), InvisibleWallsList),
+                new GameLevel(ChosenPlayer, FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(20), InvisibleWallsList),
             };
-        }
-        public void SpawnEverythingAndAddAllCollideablesToCollideablesList(Form1 formInstance)
-        {
-            //PlayerList[0].SpawnRectangle(formInstance);
-            //CreateRandomCoins(50);
-            //CreateRandomEnemies();
-
-            //allCollideables.Add(PlayerList[0]);
-
-            //foreach (var enemy in EnemyList)
-            //{
-            //    enemy.SpawnRectangle(formInstance);
-            //    allCollideables.Add(enemy);
-            //}
-            //foreach (var platform in PlatformList)
-            //{
-            //    platform.SpawnRectangle(formInstance);
-            //    allCollideables.Add(platform);
-            //}
-            //foreach (var wall in InvisibleWallsList)
-            //{
-            //    wall.SpawnRectangle(formInstance);
-            //    allCollideables.Add(wall);
-            //}
-            //foreach (var coin in CoinList)
-            //{
-            //    coin.SpawnRectangle(formInstance);
-            //}
         }
     }
 }

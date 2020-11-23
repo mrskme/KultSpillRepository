@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         private int _jumpHeight;
         private int _attackType;
 
-        private int _PlayerOwnedCoins;
+        private static int _PlayerOwnedCoins;
         private int CoinsGrabbed;
 
         public Player(int walkingSpeed, int fallSpeed, int jumpHeight, int attackType,  
@@ -50,18 +51,12 @@ namespace KultSpillHahaHeheHohoDualYolo
                     CoinsGrabbed++;
                 }
             }
-            //return CoinsGrabbed;
-            if (CoinsGrabbed == coinList.Count)
-            {
-                GameLevel.ShowUpgradePanel(formInstance);
-
-            }
         }
-        //public static bool isCoinListEmpty()
-        //{
-        //    return modifiableCoinList.Count == 0;
-        //}
-        public void UpdateCoinLabel()
+        public bool IsNoMoreCoins()
+        {
+            return CoinsGrabbed == coinList.Count;
+        }
+        public static void UpdateCoinLabel()
         {
             coinLabel.Text = $"Gold: {_PlayerOwnedCoins}";
         }
@@ -92,19 +87,28 @@ namespace KultSpillHahaHeheHohoDualYolo
             FontFamily fontFamily = new FontFamily("Times New Roman");
             Font font = new Font(fontFamily, 25);
             coinLabel.Font = font;
+            //Label1 label = new Label1(918, 6, "Gold: 0", Color.Gold, 25);
+            //label.SpawnLabel(form);
         }
 
-        public void PayUpgradePrice()
+        public void PayThePrice(int price)
         {
-            _PlayerOwnedCoins--;
+            //if (_PlayerOwnedCoins >= price)
+            //{
+                _PlayerOwnedCoins -= price;
+                UpdateCoinLabel();
+            //}
         }
 
-        public void UpgradePlayer(object sender, EventArgs e)
+        public bool CanPayThePrice(int price)
         {
-            GameLevel.speedUpgradeRectangles[0].ColorRectangle();
-            UpdateCoinLabel();
-            _walkingSpeed++;
-
+            return _PlayerOwnedCoins >= price;
+        }
+        public void SpeedUpgrade()
+        {
+            _walkingSpeed+= 2;
+            //NewRectangle.Width += 100;
+            //NewRectangle.Height += 100;
         }
     }
 }

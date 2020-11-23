@@ -59,10 +59,10 @@ namespace KultSpillHahaHeheHohoDualYolo
         //{ 
         //    allCollideables.Clear();
         //    DespawnAllObjects(formInstance);
-        //    SpawnUpgradePanel(formInstance);
+        //    CreateUpgradePanel(formInstance);
         //}
 
-        public static void DespawnAllObjects(Form1 formInstance)
+        public void DespawnAllObjects(Form1 formInstance)
         {
             _player.DespawnRectangle(formInstance);
             foreach (var enemy in _enemies)
@@ -128,11 +128,11 @@ namespace KultSpillHahaHeheHohoDualYolo
         //    new Label1(120, 360, "Coin value:", Color.Transparent, 19),
         //};
         //public static Label1 choseYourUpgradesLabel = new Label1(50, 50, "Upgrade time!", Color.Gold, 27);
-        //public static void SpawnUpgradePanel(Form1 formInstance)
+        //public static void CreateUpgradePanel(Form1 formInstance)
         //{
         //    formInstance.BackColor = Color.DodgerBlue;
         //    choseYourUpgradesLabel.SpawnLabel(formInstance);
-        //    UpgradeButton(formInstance);
+        //    AddButtonFunctionality(formInstance);
         //    foreach (var rectangle in speedUpgradeRectangles)
         //    {
         //        rectangle.SpawnRectangle(formInstance);
@@ -159,12 +159,12 @@ namespace KultSpillHahaHeheHohoDualYolo
 
         //}
 
-        //public static void UpgradeButton(Form1 formInstance)
+        //public static void AddButtonFunctionality(Form1 formInstance)
         //{
         //    var button = new Button();
         //    button.BackColor = Color.Gold;
-        //    _player.PayUpgradePrice();
-        //    button.Click += _player.UpgradePlayer;
+        //    _player.PayThePrice();
+        //    button.Click += _player.SpeedUpgrade;
         //    speedUpgradeRectangles[0].ColorRectangle();
         //    speedUpgradeRectangles[0].SpawnRectangle(formInstance);
         //    button.Width = 50;

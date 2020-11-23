@@ -31,26 +31,33 @@ namespace KultSpillHahaHeheHohoDualYolo
             Controls.Remove(button1);
             Controls.Remove(button2);
             Controls.Remove(button3);
-            //spawner.SpawnEverythingAndAddAllCollideablesToCollideablesList(this);
             enemyList = GameLevel._enemies;
-            LoadPlayer();
+            LoadGame();
             this.Controls.Add(Player.coinLabel);
-        //    foreach (var enemy in enemyList) enemy.RandomDirectionTimer();
+            foreach (var enemy in enemyList) enemy.RandomDirectionTimer();
         }
 
-        private void LoadPlayer()
+        private void LoadGame()
         {
             GameLevelsList = Spawner.GameLevelsList;
-            //chosenPlayer = GameLevelsList[0]._player;
             GameLevelsList[0].SpawnGameLevelAndAddToCollideablesList(this);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             MoveEverything();
             chosenPlayer.GrabCoinAndShowUpgradesIfNoMoreCoinsOnScreen(this);
-            // hvordan få brukervalgt spiller inn i gamelevelsList?
-            // hvordan sjekke om det ikke er flere coins igjen på nivået? 
-            //if (chosenPlayer.GrabCoinAndShowUpgradesIfNoMoreCoinsOnScreen(this) == 2) GameLevel.ShowUpgradePanel(this);
+            SpawnUpgradePanel();
+        }
+        private void SpawnUpgradePanel()
+        {
+            // implementer en måte sånn at SpawnUpgradePanel bare kjører en gang så får vi se
+            // det var fortere gjort enn sagt
+            if (chosenPlayer.IsNoMoreCoins())
+            {
+                GameLevelsList[0].DespawnAllObjects(this);
+                UpgradePanel.CreateUpgradePanel(this);
+                gameEngineTimer.Stop();
+            }
         }
         public void MoveEverything()
         {
@@ -78,11 +85,6 @@ namespace KultSpillHahaHeheHohoDualYolo
             chosenPlayer = GameLevel._player;
             StartGame();
         }
-        //private Player CHosePlayer(Player player)
-        //{
-        //    return player;
-        //}
-
         //private void Form1_MouseDown(object sender, MouseEventArgs e)
         //{
         //    GetMousePosition();
