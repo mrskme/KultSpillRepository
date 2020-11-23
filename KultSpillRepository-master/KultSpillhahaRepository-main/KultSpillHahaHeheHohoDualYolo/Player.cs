@@ -14,11 +14,13 @@ namespace KultSpillHahaHeheHohoDualYolo
     {
         private List<Coin> coinList;
         public static readonly Label coinLabel = new Label();
-        private static int _walkingSpeed;
+        private int _walkingSpeed;
         private int _fallSpeed;
         private int _jumpHeight;
         private int _attackType;
-        private int _coinCount;
+
+        private int _PlayerOwnedCoins;
+        private int CoinsGrabbed;
 
         public Player(int walkingSpeed, int fallSpeed, int jumpHeight, int attackType,  
             string name, int width, int height, Color color, int x, int y)
@@ -30,32 +32,37 @@ namespace KultSpillHahaHeheHohoDualYolo
             _jumpHeight = jumpHeight;
             _attackType = attackType;
         }
-        public void grabACoin(Form1 formInstance)
+        public void GrabCoinAndShowUpgradesIfNoMoreCoinsOnScreen(Form1 formInstance)
         {
             coinList = GameLevel._coins;
             foreach (var coin in coinList)
             {
                 if (isObjectColliding(this, coin) && coin.IsCoinVisible())
                 {
-                    _coinCount++;
+                    _PlayerOwnedCoins++;
                     UpdateCoinLabel();
                     coin.DespawnCoin(formInstance);
+                    CoinsGrabbed++;
                 }
                 else if (IsObjectColliding(coin) && coin.IsCoinVisible())
                 {
                     coin.DespawnCoin(formInstance);
+                    CoinsGrabbed++;
                 }
-                //modifiableCoinList.Remove(coin);
+            }
+            //return CoinsGrabbed;
+            if (CoinsGrabbed == /*coinList.Count*/1)
+            {
+                GameLevel.ShowUpgradePanel(formInstance);
             }
         }
-
         //public static bool isCoinListEmpty()
         //{
         //    return modifiableCoinList.Count == 0;
         //}
         public void UpdateCoinLabel()
         {
-            coinLabel.Text = $"Gold: {_coinCount}";
+            coinLabel.Text = $"Gold: {_PlayerOwnedCoins}";
         }
         public void MovePlayer()
         {
@@ -73,7 +80,6 @@ namespace KultSpillHahaHeheHohoDualYolo
                 NewRectangle.Left = oldLeft;
             }
         }
-
         public void MakeCoinLabel()
         {
             coinLabel.Width = 150;
@@ -86,6 +92,11 @@ namespace KultSpillHahaHeheHohoDualYolo
             FontFamily fontFamily = new FontFamily("Times New Roman");
             Font font = new Font(fontFamily, 25);
             coinLabel.Font = font;
+        }
+
+        public void UpgradePlayer(string attribute)
+        {
+            if (attribute == "walkingSpeed") _walkingSpeed++;
         }
     }
 }

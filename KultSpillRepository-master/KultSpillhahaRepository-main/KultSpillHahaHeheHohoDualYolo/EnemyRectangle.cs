@@ -28,7 +28,6 @@ namespace KultSpillHahaHeheHohoDualYolo
             if (IsObjectColliding(this))
             {
                 RandomDirection();
-
                 NewRectangle.Top = oldTop;
                 NewRectangle.Left = oldLeft;
             }
@@ -55,6 +54,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             {
                 NewRectangle.Left += CurrentSpeed;
             }
+
             RandomDirectionIfCollide();
         }
 

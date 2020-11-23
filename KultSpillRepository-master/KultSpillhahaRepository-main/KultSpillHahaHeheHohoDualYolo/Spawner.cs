@@ -61,13 +61,11 @@ namespace KultSpillHahaHeheHohoDualYolo
         };
         public static List<Player> PlayerList { get; } = new List<Player>
         {
-            new Player(18, 8, 10, 0, "Player", 40, 40, Color.FromArgb(18, 191, 2), screenWidth/2, screenHeight/2+-50),
-            new Player(25, 8, 10, 0, "Player", 20, 20, Color.FromArgb(18, 191, 2), screenWidth/2, screenHeight/2+-50),
-            new Player(12, 8, 10, 0, "Player", 70, 70, Color.FromArgb(18, 191, 2), screenWidth/2, screenHeight/2+-50),
+            new Player(17, 8, 10, 0, "Player", 40, 40, Color.FromArgb(18, 191, 2), screenWidth/2, screenHeight/2+-50),
+            new Player(26, 8, 10, 0, "Player", 20, 20, Color.FromArgb(255, 0, 2), screenWidth/2, screenHeight/2+-50),
+            new Player(12, 8, 10, 0, "Player", 70, 70, Color.FromArgb(18, 32, 255), screenWidth/2, screenHeight/2+-50),
         };
-        public static List<Coin> CoinList { get; } = new List<Coin>
-        {
-        };
+        public static List<Coin> CoinList { get; } = new List<Coin>();
         public static List<EnemyRectangle> FirstLevelEnemies = new List<EnemyRectangle>
         {
             new EnemyRectangle(Color.Aqua, 50, 100, "down", 16, 40, 40, 1000),
@@ -90,21 +88,29 @@ namespace KultSpillHahaHeheHohoDualYolo
 
             return CoinList;
         }
-        public static Player ChosePlayer(Player Player)
-        {
-            return Player;
-        }
+        //public static Player ChosePlayer(Player Player)
+        //{
+        //    return Player;
+        //}
         public static List<Platform> InvisibleWallsList = new List<Platform>
         {
             new Platform("leftWall", 0, screenHeight, Color.Blue, 0, 0),
-            new Platform("rightWall", 0, screenHeight, Color.Blue,screenWidth,0),
-            new Platform("topWall", screenWidth, 0, Color.Blue, 0 ,0 ),
-            new Platform("bottomWall", screenWidth, 0, Color.Blue,0, screenHeight),
+            new Platform("rightWall", 0, screenHeight, Color.Blue, screenWidth, 0),
+            new Platform("topWall", screenWidth, 0, Color.Blue, 0, 0),
+            new Platform("bottomWall", screenWidth, 0, Color.Blue, 0, screenHeight),
         };
-        public static List<GameLevel> GameLevelsList = new List<GameLevel>
+        //public static List<GameLevel> GameLevelsList = new List<GameLevel>
+        //{
+        //    new GameLevel(/*Form1.chosenPlayer*//*Form1.GetChosenPlayer()*/Form1.GetChosenPlayer(), FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(8), InvisibleWallsList),
+        //};
+        public static List<GameLevel> GameLevelsList = new List<GameLevel>();
+        public static void GetPlayer(Player ChosenPlayer)
         {
-            new GameLevel(/*Form1.chosenPlayer*//*Form1.GetChosenPlayer()*/PlayerList[0], FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(8), InvisibleWallsList),
-        };
+            GameLevelsList = new List<GameLevel>
+            {
+                new GameLevel(ChosenPlayer, FirstLevelEnemies, FirstLevelPlatforms, CreateRandomCoins(8), InvisibleWallsList),
+            };
+        }
         public void SpawnEverythingAndAddAllCollideablesToCollideablesList(Form1 formInstance)
         {
             //PlayerList[0].SpawnRectangle(formInstance);

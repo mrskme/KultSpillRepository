@@ -15,10 +15,10 @@ namespace KultSpillHahaHeheHohoDualYolo
         Spawner spawner = new Spawner();
         //private Player player = Spawner.PlayerList[0];
         private List<Player> playerList = Spawner.PlayerList;
-        private List<GameLevel> GameLevelsList = Spawner.GameLevelsList;
-        private List<EnemyRectangle> enemyList = GameLevel._enemies;
+        private List<GameLevel> GameLevelsList;
+        private List<EnemyRectangle> enemyList;
         //private Player chosenPlayer = GameLevel._player;
-        private static Player chosenPlayer = GameLevel._player;
+        private static Player chosenPlayer;
         public Form1()
         {
             InitializeComponent();
@@ -32,17 +32,25 @@ namespace KultSpillHahaHeheHohoDualYolo
             Controls.Remove(button2);
             Controls.Remove(button3);
             //spawner.SpawnEverythingAndAddAllCollideablesToCollideablesList(this);
-            GameLevelsList[0].SpawnGameLevelAndAddToCollideablesList(this/*, chosenPlayer*/);
+            enemyList = GameLevel._enemies;
+            LoadPlayer();
             this.Controls.Add(Player.coinLabel);
-            foreach (var enemy in enemyList) enemy.RandomDirectionTimer();
+        //    foreach (var enemy in enemyList) enemy.RandomDirectionTimer();
+        }
+
+        private void LoadPlayer()
+        {
+            GameLevelsList = Spawner.GameLevelsList;
+            //chosenPlayer = GameLevelsList[0]._player;
+            GameLevelsList[0].SpawnGameLevelAndAddToCollideablesList(this);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             MoveEverything();
-            chosenPlayer.grabACoin(this);
+            chosenPlayer.GrabCoinAndShowUpgradesIfNoMoreCoinsOnScreen(this);
             // hvordan få brukervalgt spiller inn i gamelevelsList?
             // hvordan sjekke om det ikke er flere coins igjen på nivået? 
-            //if(Player.isCoinListEmpty()) GameLevel.ShowUpgradePanel(this);
+            //if (chosenPlayer.GrabCoinAndShowUpgradesIfNoMoreCoinsOnScreen(this) == 2) GameLevel.ShowUpgradePanel(this);
         }
         public void MoveEverything()
         {
@@ -54,27 +62,21 @@ namespace KultSpillHahaHeheHohoDualYolo
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            //StartGame(playerList[0]);
-            //Spawner.ChosePlayer(playerList[0]);
-            chosenPlayer = playerList[0];
+            Spawner.GetPlayer(playerList[0]);
+            chosenPlayer = GameLevel._player;
             StartGame();
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            //StartGame(playerList[1]);
-            chosenPlayer = playerList[1];
+            Spawner.GetPlayer(playerList[1]);
+            chosenPlayer = GameLevel._player;
             StartGame();
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            //StartGame(playerList[2]);
-            //return playerList[2];
-            chosenPlayer = playerList[2];
+            Spawner.GetPlayer(playerList[2]);
+            chosenPlayer = GameLevel._player;
             StartGame();
-        }
-        private Player GetChosenPlayer()
-        {
-            return chosenPlayer;
         }
         //private Player CHosePlayer(Player player)
         //{

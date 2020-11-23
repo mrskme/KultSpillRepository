@@ -51,6 +51,7 @@
     <Compile Include="Coin.cs" />
     <Compile Include="Collision.cs" />
     <Compile Include="GameLevel.cs" />
+    <Compile Include="Label1.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Spawner.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle1.cs" />
+    <Compile Include="UpgradeDisplayerRectangle.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
