@@ -14,10 +14,10 @@ namespace KultSpillHahaHeheHohoDualYolo
         {
             //bronze, sølv og gullcoins?
         }
-        public void DespawnCoin(Form1 formInstance)
+        public void DespawnCoin()
         {
             NewRectangle.Visible = false;
-            formInstance.Controls.Remove(NewRectangle);
+            Form1.form1.Controls.Remove(NewRectangle);
         }
         public bool IsCoinVisible()
         {

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KultSpillHahaHeheHohoDualYolo
 {
@@ -18,7 +19,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             new UpgradeDisplayerRectangle(Color.Transparent,/* Color.Green,*/  490, 145),
             new UpgradeDisplayerRectangle(Color.Transparent,/* Color.Green,*/  540, 145),
         };
-        static List<UpgradeDisplayerRectangle> sizeUpgradeRectangles = new List<UpgradeDisplayerRectangle>
+        public static List<UpgradeDisplayerRectangle> sizeUpgradeRectangles = new List<UpgradeDisplayerRectangle>
         {
             new UpgradeDisplayerRectangle(Color.Transparent, 340, 215),
             new UpgradeDisplayerRectangle(Color.Transparent, 390, 215),
@@ -26,7 +27,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             new UpgradeDisplayerRectangle(Color.Transparent, 490, 215),
             new UpgradeDisplayerRectangle(Color.Transparent, 540, 215),
         };
-        static List<UpgradeDisplayerRectangle> coinFindUpgradesList = new List<UpgradeDisplayerRectangle>
+        public static List<UpgradeDisplayerRectangle> coinFindUpgradesRectangles = new List<UpgradeDisplayerRectangle>
         {
             new UpgradeDisplayerRectangle(Color.Transparent, 340, 285),
             new UpgradeDisplayerRectangle(Color.Transparent, 390, 285),
@@ -34,7 +35,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             new UpgradeDisplayerRectangle(Color.Transparent, 490, 285),
             new UpgradeDisplayerRectangle(Color.Transparent, 540, 285),
         };
-        static List<UpgradeDisplayerRectangle> coinValueUpgradeList = new List<UpgradeDisplayerRectangle>
+        public static List<UpgradeDisplayerRectangle> coinValueUpgradeRectangles = new List<UpgradeDisplayerRectangle>
         {
             new UpgradeDisplayerRectangle(Color.Transparent, 340, 355),
             new UpgradeDisplayerRectangle(Color.Transparent, 390, 355),
@@ -52,42 +53,93 @@ namespace KultSpillHahaHeheHohoDualYolo
         };
         static List<Buttons> ButtonsList = new List<Buttons>
         {
-            new Buttons(new Point(40,152), 50,25),
+            new Buttons(new Point(40,157), 50,25, "BUY", new Font("times new roman", 9)),
+            new Buttons(new Point(40,227), 50,25, "BUY",new Font("times new roman", 9)),
+            new Buttons(new Point(40,297), 50,25, "BUY",new Font("times new roman", 9)),
+            new Buttons(new Point(40,367), 50,25, "BUY",new Font("times new roman", 9)),
+            new Buttons(new Point(1185,610), 150,100, "Go to next level",new Font("times new roman", 19)),
         };
+        // buttonlist må gjøres om til en metode som tar form1 som parameter, som kalles fra form1 med this som parameter
         public static Label1 choseYourUpgradesLabel = new Label1(50, 50, "Upgrade time!", Color.Gold, 27);
-        public static void CreateUpgradePanel(Form1 formInstance)
+        public static void CreateUpgradePanel( )
         {
-            formInstance.BackColor = Color.MediumSlateBlue;
-            choseYourUpgradesLabel.SpawnLabel(formInstance);
+            Form1.form1.BackColor = Color.MediumSlateBlue;
+            choseYourUpgradesLabel.SpawnLabel();
             foreach (var rectangle in speedUpgradeRectangles)
             {
-                rectangle.SpawnRectangle(formInstance);
+                rectangle.SpawnRectangle();
             }
 
             foreach (var rectangle in sizeUpgradeRectangles)
             {
-                rectangle.SpawnRectangle(formInstance);
+                rectangle.SpawnRectangle();
             }
 
-            foreach (var rectangle in coinFindUpgradesList)
+            foreach (var rectangle in coinFindUpgradesRectangles)
             {
-                rectangle.SpawnRectangle(formInstance);
+                rectangle.SpawnRectangle();
             }
 
-            foreach (var rectangle in coinValueUpgradeList)
+            foreach (var rectangle in coinValueUpgradeRectangles)
             {
-                rectangle.SpawnRectangle(formInstance);
+                rectangle.SpawnRectangle();
             }
             foreach (var label in labelList)
             {
-                label.SpawnLabel(formInstance);
+                label.SpawnLabel();
             }
 
             foreach (var button in ButtonsList)
             {
-                button.SpawnButton(formInstance);
-                button.ButtonClick();
+                button.SpawnButton();
+                //button.SpeedUpgradeOnClick();
             }
+            foreach (var label in Buttons.priceLabel) label.SpawnLabel();
+            addButtonFunctionality();
+        }
+
+        public static void DespawnUpgradePanel()
+        {
+            Form1.form1.BackColor = Color.PowderBlue;
+            choseYourUpgradesLabel.DespawnLabel();
+            foreach (var rectangle in speedUpgradeRectangles)
+            {
+                rectangle.DespawnRectangle();
+            }
+
+            foreach (var rectangle in sizeUpgradeRectangles)
+            {
+                rectangle.DespawnRectangle();
+            }
+
+            foreach (var rectangle in coinFindUpgradesRectangles)
+            {
+                rectangle.DespawnRectangle();
+            }
+
+            foreach (var rectangle in coinValueUpgradeRectangles)
+            {
+                rectangle.DespawnRectangle();
+            }
+            foreach (var label in labelList)
+            {
+                label.DespawnLabel();
+            }
+
+            foreach (var button in ButtonsList)
+            {
+                button.DespawnButton();
+                //button.SpeedUpgradeOnClick();
+            }
+            foreach (var label in Buttons.priceLabel) label.DespawnLabel();
+        }
+        private static void addButtonFunctionality()
+        {
+            ButtonsList[0].SpeedUpgradeOnClick();
+            ButtonsList[1].sizeUpgradeUpgradeOnClick();
+            ButtonsList[2].CoinFindUpgradeOnClick();
+            ButtonsList[3].CoinValueUpgradeOnClick();
+            ButtonsList[4].NextLevelButtonOnClick();
         }
     }
 }

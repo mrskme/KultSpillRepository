@@ -110,7 +110,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Timer gameEngineTimer;
+        public System.Windows.Forms.Timer gameEngineTimer;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

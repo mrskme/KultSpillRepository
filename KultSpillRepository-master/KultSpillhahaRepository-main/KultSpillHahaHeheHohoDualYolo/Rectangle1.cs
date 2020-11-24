@@ -28,17 +28,17 @@ namespace KultSpillHahaHeheHohoDualYolo
             NewRectangle.Height = _height;
             NewRectangle.Location = new Point(_x, _y);
         }
-        public void SpawnRectangle(Form formInstance)
+        public void SpawnRectangle()
         {
             //NewRectangle.Name = _name;
             //NewRectangle.Width = _width;
             //NewRectangle.Height = _height;
             //NewRectangle.Location = new Point(_x,_y);
-            formInstance.Controls.Add(NewRectangle);
+            Form1.form1.Controls.Add(NewRectangle);
         }
-        public void DespawnRectangle(Form1 formInstance)
+        public void DespawnRectangle()
         {
-            formInstance.Controls.Remove(NewRectangle);
+            Form1.form1.Controls.Remove(NewRectangle);
         }
     }
 }

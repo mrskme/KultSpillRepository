@@ -28,9 +28,14 @@ namespace KultSpillHahaHeheHohoDualYolo
             //label.BackColor = Color.Gold;
         }
 
-        public void SpawnLabel(Form1 formInstance)
+        public void SpawnLabel( )
         {
-            formInstance.Controls.Add(label);
+            Form1.form1.Controls.Add(label);
+        }
+
+        public void DespawnLabel( )
+        {
+            Form1.form1.Controls.Remove(label);
         }
 
         

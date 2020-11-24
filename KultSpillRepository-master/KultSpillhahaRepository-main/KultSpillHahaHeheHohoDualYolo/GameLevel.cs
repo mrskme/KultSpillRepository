@@ -12,10 +12,10 @@ namespace KultSpillHahaHeheHohoDualYolo
     class GameLevel
     {
         public static Player _player;
-        public static  List<EnemyRectangle> _enemies;
-        public static List<Platform> _platforms;
-        public static List<Coin> _coins;
-        private static List<Platform> _invisibleWalls;
+        public  List<EnemyRectangle> _enemies;
+        public List<Platform> _platforms;
+        public List<Coin> _coins;
+        private List<Platform> _invisibleWalls;
         public static List<Collision> allCollideables = new List<Collision>();
 
 
@@ -27,63 +27,59 @@ namespace KultSpillHahaHeheHohoDualYolo
             _coins = coins;
             _invisibleWalls = invisibleWalls;
         }
-        public void SpawnGameLevelAndAddToCollideablesList(Form1 formInstance/*, Player player*/)
+        public void SpawnGameLevelAndAddToCollideablesList()
         {
+            foreach (var coin in _coins)
+            {
+                coin.SpawnRectangle();
+            }
             allCollideables.Add(_player);
-            _player.SpawnRectangle(formInstance);
+            _player.SpawnRectangle();
 
             foreach (var enemy in _enemies)
             {
-                enemy.SpawnRectangle(formInstance);
+                enemy.SpawnRectangle();
                 allCollideables.Add(enemy);
             }
 
             foreach (var platform in _platforms)
             {
                 allCollideables.Add(platform);
-                platform.SpawnRectangle(formInstance);
+                platform.SpawnRectangle();
             }
-
-            foreach (var coin in _coins)
-            {
-                coin.SpawnRectangle(formInstance);
-            }
-
             foreach (var invisibleWall in _invisibleWalls)
             {
                 allCollideables.Add(invisibleWall);
-                invisibleWall.SpawnRectangle(formInstance);
+                invisibleWall.SpawnRectangle();
             }
         }
-        //public static void ShowUpgradePanel(Form1 formInstance)
-        //{ 
-        //    allCollideables.Clear();
-        //    DespawnAllObjects(formInstance);
-        //    CreateUpgradePanel(formInstance);
-        //}
-
-        public void DespawnAllObjects(Form1 formInstance)
+        public void DespawnAllObjects( )
         {
-            _player.DespawnRectangle(formInstance);
+            _player.DespawnRectangle();
             foreach (var enemy in _enemies)
             {
-                enemy.DespawnRectangle(formInstance);
+                enemy.DespawnRectangle();
             }
 
             foreach (var platform in _platforms)
             {
-                platform.DespawnRectangle(formInstance);
+                platform.DespawnRectangle();
             }
 
             foreach (var coin in _coins)
             {
-                coin.DespawnRectangle(formInstance);
+                coin.DespawnRectangle();
             }
 
             foreach (var invisibleWall in _invisibleWalls)
             {
-                invisibleWall.DespawnRectangle(formInstance);
+                invisibleWall.DespawnRectangle();
             }
+        }
+        public void MoveEverything()
+        {
+            foreach (var enemy in _enemies) enemy.MoveEnemyInDirection();
+            _player.MovePlayer();
         }
 
         //public static List<UpgradeDisplayerRectangle> speedUpgradeRectangles = new List<UpgradeDisplayerRectangle>
@@ -103,7 +99,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         //    new UpgradeDisplayerRectangle(Color.Transparent, 490, 215),
         //    new UpgradeDisplayerRectangle(Color.Transparent, 540, 215),
         //};
-        //static List<UpgradeDisplayerRectangle> coinFindUpgradesList = new List<UpgradeDisplayerRectangle>
+        //static List<UpgradeDisplayerRectangle> coinFindUpgradesRectangles = new List<UpgradeDisplayerRectangle>
         //{
         //    new UpgradeDisplayerRectangle(Color.Transparent, 340, 285),
         //    new UpgradeDisplayerRectangle(Color.Transparent, 390, 285),
@@ -111,7 +107,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         //    new UpgradeDisplayerRectangle(Color.Transparent, 490, 285),
         //    new UpgradeDisplayerRectangle(Color.Transparent, 540, 285),
         //};
-        //static List<UpgradeDisplayerRectangle> coinValueUpgradeList = new List<UpgradeDisplayerRectangle>
+        //static List<UpgradeDisplayerRectangle> coinValueUpgradeRectangles = new List<UpgradeDisplayerRectangle>
         //{
         //    new UpgradeDisplayerRectangle(Color.Transparent, 340, 355),
         //    new UpgradeDisplayerRectangle(Color.Transparent, 390, 355),
@@ -143,12 +139,12 @@ namespace KultSpillHahaHeheHohoDualYolo
         //        rectangle.SpawnRectangle(formInstance);
         //    }
 
-        //    foreach (var rectangle in coinFindUpgradesList)
+        //    foreach (var rectangle in coinFindUpgradesRectangles)
         //    {
         //        rectangle.SpawnRectangle(formInstance);
         //    }
 
-        //    foreach (var rectangle in coinValueUpgradeList)
+        //    foreach (var rectangle in coinValueUpgradeRectangles)
         //    {
         //        rectangle.SpawnRectangle(formInstance);
         //    }

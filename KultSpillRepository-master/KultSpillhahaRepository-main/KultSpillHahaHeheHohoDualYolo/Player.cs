@@ -21,7 +21,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         private int _attackType;
 
         private static int _PlayerOwnedCoins;
-        private int CoinsGrabbed;
+        public static int CoinsGrabbed;
 
         public Player(int walkingSpeed, int fallSpeed, int jumpHeight, int attackType,  
             string name, int width, int height, Color color, int x, int y)
@@ -33,21 +33,21 @@ namespace KultSpillHahaHeheHohoDualYolo
             _jumpHeight = jumpHeight;
             _attackType = attackType;
         }
-        public void GrabCoinAndShowUpgradesIfNoMoreCoinsOnScreen(Form1 formInstance)
+        public void GrabCoinAndShowUpgradesIfNoMoreCoinsOnScreen(List<GameLevel> GameLevelList)
         {
-            coinList = GameLevel._coins;
+            coinList = GameLevelList[Form1.form1._currentGameLevel]._coins;
             foreach (var coin in coinList)
             {
                 if (isObjectColliding(this, coin) && coin.IsCoinVisible())
                 {
                     _PlayerOwnedCoins++;
                     UpdateCoinLabel();
-                    coin.DespawnCoin(formInstance);
+                    coin.DespawnCoin();
                     CoinsGrabbed++;
                 }
                 else if (IsObjectColliding(coin) && coin.IsCoinVisible())
                 {
-                    coin.DespawnCoin(formInstance);
+                    coin.DespawnCoin();
                     CoinsGrabbed++;
                 }
             }
@@ -80,7 +80,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         {
             coinLabel.AutoSize = true;
             coinLabel.Top = 6;
-            coinLabel.Left = 918;
+            coinLabel.Left = 1220;
             coinLabel.Text = "Gold: 0";
             coinLabel.ForeColor = Color.Gold;
             coinLabel.BackColor = Color.Transparent;
@@ -109,6 +109,12 @@ namespace KultSpillHahaHeheHohoDualYolo
             _walkingSpeed+= 2;
             //NewRectangle.Width += 100;
             //NewRectangle.Height += 100;
+        }
+
+        public void SizeUpgrade()
+        {
+            NewRectangle.Width += 4;
+            NewRectangle.Height += 4;
         }
     }
 }
