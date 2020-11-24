@@ -153,7 +153,6 @@ namespace KultSpillHahaHeheHohoDualYolo
             UpgradePanel.DespawnUpgradePanel();
             Form1.form1._currentGameLevel++;
             Form1.form1.GameLevelsList[Form1.form1._currentGameLevel].SpawnGameLevelAndAddToCollideablesList();
-            //Form1.form1._currentGameLevel++;
             Player.CoinsGrabbed = 0;
             Form1.form1.gameEngineTimer.Start();
         }

@@ -49,12 +49,17 @@ namespace KultSpillHahaHeheHohoDualYolo
         private List<Coin> CoinList { get; } = new List<Coin>();
         private List<Coin> CreateRandomCoins(int coinAmount)
         {
+            Color color = Color.BurlyWood;
+            int value = 5;
+            string type = "gold";
+            //create random må bare lage random posisjon
+
             var SpaceBetweenCoinAndWall = 6;
             for (var i = 0; i < coinAmount; i++)
             {
                 var x = random.Next(0, screenWidth - 17 - SpaceBetweenCoinAndWall);
                 var y = random.Next(0, screenHeight - 24 - SpaceBetweenCoinAndWall);
-                CoinList.Add(new Coin(x, y));
+                CoinList.Add(new Coin(color, x, y, value, type));
             }
             return CoinList;
         }

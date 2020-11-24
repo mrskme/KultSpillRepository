@@ -10,9 +10,10 @@ namespace KultSpillHahaHeheHohoDualYolo
 {
     class Coin : Rectangle1
     {
-        public Coin( int x, int y) :base("coin",17, 24, Color.Gold, x,y, true)
+        public Coin(Color color, int x, int y, int value, string type) : base("coin",17, 24, color, x,y, true)
         {
-            //bronze, sølv og gullcoins?
+            //bronze, sølv og gullcoins
+            //revamp coin med _value og få inn oppgraderingene
         }
         public void DespawnCoin()
         {

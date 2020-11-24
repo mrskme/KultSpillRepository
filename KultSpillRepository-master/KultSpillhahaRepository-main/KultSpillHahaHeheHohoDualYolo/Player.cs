@@ -27,11 +27,13 @@ namespace KultSpillHahaHeheHohoDualYolo
             string name, int width, int height, Color color, int x, int y)
             : base( name,  width,  height, color,  x,  y, false)
         {
+            //coinLabel.SendToBack();
             MakeCoinLabel();
             _walkingSpeed = walkingSpeed;
             _fallSpeed = fallSpeed;
             _jumpHeight = jumpHeight;
             _attackType = attackType;
+
         }
         public void GrabCoinAndShowUpgradesIfNoMoreCoinsOnScreen(List<GameLevel> GameLevelList)
         {
