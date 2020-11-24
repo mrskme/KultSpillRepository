@@ -93,11 +93,8 @@ namespace KultSpillHahaHeheHohoDualYolo
 
         public void PayThePrice(int price)
         {
-            //if (_PlayerOwnedCoins >= price)
-            //{
-                _PlayerOwnedCoins -= price;
-                UpdateCoinLabel();
-            //}
+            _PlayerOwnedCoins -= price;
+            UpdateCoinLabel();
         }
 
         public bool CanPayThePrice(int price)

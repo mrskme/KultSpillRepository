@@ -12,10 +12,10 @@ namespace KultSpillHahaHeheHohoDualYolo
     {
         Button button = new Button();
         public Player ChosenPlayer = GameLevel._player;
-        private static int _speedUpgradePrice = 2;
-        private int _sizeUpgradePrice = 2;
-        private int _coinFindUpgradePrice = 2;
-        private int _coinValueUpgradePrice = 2;
+        public static int _speedUpgradePrice = 2;
+        public static int _sizeUpgradePrice = 2;
+        public static int _coinFindUpgradePrice = 2;
+        public static int _coinValueUpgradePrice = 2;
 
         public Buttons(Point location, int width, int height, string text, Font font) 
         {
@@ -81,6 +81,7 @@ namespace KultSpillHahaHeheHohoDualYolo
                 else if (_speedUpgradePrice == 16) UpgradePanel.speedUpgradeRectangles[3].ColorRectangle();
                 else if (_speedUpgradePrice == 32) UpgradePanel.speedUpgradeRectangles[4].ColorRectangle();
                 _speedUpgradePrice *= 2;
+                priceLabel[0].UpdatePriceLabel($"{_speedUpgradePrice}");
             }
         }
 
@@ -156,14 +157,12 @@ namespace KultSpillHahaHeheHohoDualYolo
             Player.CoinsGrabbed = 0;
             Form1.form1.gameEngineTimer.Start();
         }
-        public static List<Label1> priceLabel = new List<Label1>
+        public List<Label1> priceLabel = new List<Label1>
         {
-            new Label1(220, 150, $"{_speedUpgradePrice}", Color.Gold, 20),
+            new Label1(230, 150, $"{_speedUpgradePrice}", Color.Gold, 20),
+            new Label1(230, 220, $"{_sizeUpgradePrice}", Color.Gold, 20),
+            new Label1(230, 150, $"{_coinFindUpgradePrice}", Color.Gold, 20),
+            new Label1(230, 150, $"{_coinValueUpgradePrice}", Color.Gold, 20),
         };
-
-        public void SpawnLabels(Form1 formInstance)
-        {
-            foreach (var label in priceLabel) label.SpawnLabel();
-        }
     }
 }

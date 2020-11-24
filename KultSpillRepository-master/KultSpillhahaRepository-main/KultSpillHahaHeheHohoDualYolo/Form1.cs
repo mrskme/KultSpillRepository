@@ -89,7 +89,6 @@ namespace KultSpillHahaHeheHohoDualYolo
             Controls.Remove(button1);
             Controls.Remove(button2);
             Controls.Remove(button3);
-            //enemyList = GameLevel._enemies;
             LoadGame();
             this.Controls.Add(Player.coinLabel);
             foreach (var enemy in GameLevelsList[_currentGameLevel]._enemies) enemy.RandomDirectionTimer();
@@ -97,7 +96,6 @@ namespace KultSpillHahaHeheHohoDualYolo
 
         private void LoadGame()
         {
-            //GameLevelsList = Spawner.GameLevelsList;
             CreateRandomCoins(10);
             GameLevelsList[_currentGameLevel].SpawnGameLevelAndAddToCollideablesList();
         }
@@ -118,30 +116,19 @@ namespace KultSpillHahaHeheHohoDualYolo
                 gameEngineTimer.Stop();
             }
         }
-        //public void MoveEverything()
-        //{
-        //    for (int i = 0; i < enemyList.Count; i++)
-        //    {
-        //        enemyList[i].MoveEnemyInDirection();
-        //    }
-        //    chosenPlayer.MovePlayer();
-        //}
         private void button1_Click(object sender, EventArgs e)
         {
-            /*Spawner.*/GetPlayer(_PlayerList[0]);
-            //chosenPlayer = GameLevel._player;
+            GetPlayer(_PlayerList[0]);
             StartGame();
         }
         private void button2_Click(object sender, EventArgs e)
         {
             GetPlayer(_PlayerList[1]);
-            //chosenPlayer = GameLevel._player;
             StartGame();
         }
         private void button3_Click(object sender, EventArgs e)
         {
             GetPlayer(_PlayerList[2]);
-            //chosenPlayer = GameLevel._player;
             StartGame();
         }
         //private void Form1_MouseDown(object sender, MouseEventArgs e)

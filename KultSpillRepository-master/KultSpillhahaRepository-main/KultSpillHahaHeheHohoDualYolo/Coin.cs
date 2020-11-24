@@ -17,7 +17,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         public void DespawnCoin()
         {
             NewRectangle.Visible = false;
-            Form1.form1.Controls.Remove(NewRectangle);
+            //Form1.form1.Controls.Remove(NewRectangle);
         }
         public bool IsCoinVisible()
         {

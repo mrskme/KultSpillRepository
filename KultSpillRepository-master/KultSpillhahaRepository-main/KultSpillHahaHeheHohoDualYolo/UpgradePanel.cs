@@ -59,6 +59,13 @@ namespace KultSpillHahaHeheHohoDualYolo
             new Buttons(new Point(40,367), 50,25, "BUY",new Font("times new roman", 9)),
             new Buttons(new Point(1185,610), 150,100, "Go to next level",new Font("times new roman", 19)),
         };
+        public static List<Label1> priceLabel = new List<Label1>
+        {
+            new Label1(230, 150, $"{Buttons._speedUpgradePrice}", Color.Gold, 20),
+            new Label1(230, 220, $"{Buttons._sizeUpgradePrice}", Color.Gold, 20),
+            new Label1(230, 150, $"{Buttons._coinFindUpgradePrice}", Color.Gold, 20),
+            new Label1(230, 150, $"{Buttons._coinValueUpgradePrice}", Color.Gold, 20),
+        };
         // buttonlist må gjøres om til en metode som tar form1 som parameter, som kalles fra form1 med this som parameter
         public static Label1 choseYourUpgradesLabel = new Label1(50, 50, "Upgrade time!", Color.Gold, 27);
         public static void CreateUpgradePanel( )
@@ -94,7 +101,7 @@ namespace KultSpillHahaHeheHohoDualYolo
                 button.SpawnButton();
                 //button.SpeedUpgradeOnClick();
             }
-            foreach (var label in Buttons.priceLabel) label.SpawnLabel();
+            foreach (var label in priceLabel) label.SpawnLabel();
             addButtonFunctionality();
         }
 
@@ -131,7 +138,7 @@ namespace KultSpillHahaHeheHohoDualYolo
                 button.DespawnButton();
                 //button.SpeedUpgradeOnClick();
             }
-            foreach (var label in Buttons.priceLabel) label.DespawnLabel();
+            foreach (var label in priceLabel) label.DespawnLabel();
         }
         private static void addButtonFunctionality()
         {

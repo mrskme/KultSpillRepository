@@ -38,6 +38,11 @@ namespace KultSpillHahaHeheHohoDualYolo
             Form1.form1.Controls.Remove(label);
         }
 
+        public void UpdatePriceLabel(string text)
+        {
+            label.Text = text;
+        }
+
         
     }
 }
