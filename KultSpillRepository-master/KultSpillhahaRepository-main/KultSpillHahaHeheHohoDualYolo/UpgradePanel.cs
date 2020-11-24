@@ -57,7 +57,7 @@ namespace KultSpillHahaHeheHohoDualYolo
         public static Label1 choseYourUpgradesLabel = new Label1(50, 50, "Upgrade time!", Color.Gold, 27);
         public static void CreateUpgradePanel(Form1 formInstance)
         {
-            formInstance.BackColor = Color.DodgerBlue;
+            formInstance.BackColor = Color.MediumSlateBlue;
             choseYourUpgradesLabel.SpawnLabel(formInstance);
             foreach (var rectangle in speedUpgradeRectangles)
             {
@@ -88,7 +88,6 @@ namespace KultSpillHahaHeheHohoDualYolo
                 button.SpawnButton(formInstance);
                 button.ButtonClick();
             }
-
         }
     }
 }
