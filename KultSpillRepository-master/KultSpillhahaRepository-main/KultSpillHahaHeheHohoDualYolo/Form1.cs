@@ -95,7 +95,7 @@ namespace KultSpillHahaHeheHohoDualYolo
             Controls.Remove(button2);
             Controls.Remove(button3);
             LoadGame();
-            this.Controls.Add(Player.coinLabel);
+            //this.Controls.Add(Player.coinLabel);
             foreach (var enemy in GameLevelsList[_currentGameLevel]._enemies) enemy.RandomDirectionTimer();
         }
 

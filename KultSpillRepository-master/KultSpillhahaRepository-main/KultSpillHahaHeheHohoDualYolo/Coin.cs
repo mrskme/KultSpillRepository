@@ -12,8 +12,10 @@ namespace KultSpillHahaHeheHohoDualYolo
     {
         public Coin(Color color, int x, int y, int value, string type) : base("coin",17, 24, color, x,y, true)
         {
+            //tell coins og gange med value faktor
             //bronze, sølv og gullcoins
             //revamp coin med _value og få inn oppgraderingene
+            //Når man viser coins på skjermen så skjer logikken
         }
         public void DespawnCoin()
         {

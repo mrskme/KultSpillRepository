@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,10 +31,6 @@ namespace KultSpillHahaHeheHohoDualYolo
         }
         public void SpawnRectangle()
         {
-            //NewRectangle.Name = _name;
-            //NewRectangle.Width = _width;
-            //NewRectangle.Height = _height;
-            //NewRectangle.Location = new Point(_x,_y);
             Form1.form1.Controls.Add(NewRectangle);
         }
         public void DespawnRectangle()

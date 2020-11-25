@@ -15,16 +15,16 @@ namespace KultSpillHahaHeheHohoDualYolo
         //private int _height;
         //private string _text;
         //private Color _backColor;
-        public Label1(int x, int y, string text, Color backColor, int textSize)
+        public Label1(int x, int y, string text, Color foreColor, int textSize)
         {
             label.AutoSize = true;
             label.Location = new Point(x, y);
             Font font = new Font(new FontFamily("Times New Roman"), textSize);
             label.Font = font;
             label.Text = text;
-            //label.BackColor = backColor;
-            //_backColor = backColor;
-            label.ForeColor = Color.Gold;
+            //label.BackColor = foreColor;
+            //_backColor = foreColor;
+            label.ForeColor = foreColor;
             //label.BackColor = Color.Gold;
         }
 
@@ -38,11 +38,9 @@ namespace KultSpillHahaHeheHohoDualYolo
             Form1.form1.Controls.Remove(label);
         }
 
-        public void UpdatePriceLabel(string text)
+        public void UpdateLabel(string text)
         {
             label.Text = text;
         }
-
-        
     }
 }

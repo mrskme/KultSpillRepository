@@ -81,7 +81,7 @@ namespace KultSpillHahaHeheHohoDualYolo
                 else if (_speedUpgradePrice == 16) UpgradePanel.speedUpgradeRectangles[3].ColorRectangle();
                 else if (_speedUpgradePrice == 32) UpgradePanel.speedUpgradeRectangles[4].ColorRectangle();
                 _speedUpgradePrice *= 2;
-                priceLabel[0].UpdatePriceLabel($"{_speedUpgradePrice}");
+                priceLabel[0].UpdateLabel($"{_speedUpgradePrice}");
             }
         }
 
@@ -139,7 +139,7 @@ namespace KultSpillHahaHeheHohoDualYolo
                 button.Text = "BUY";
                 button.BackColor = Color.FromArgb(18, 191, 2);
                 ChosenPlayer.PayThePrice(_coinValueUpgradePrice);
-                //ChosenPlayer.SpeedUpgrade();
+                ChosenPlayer.CoinValueUpgrade();
                 if (_coinValueUpgradePrice == 2) UpgradePanel.coinValueUpgradeRectangles[0].ColorRectangle();
                 else if (_coinValueUpgradePrice == 4) UpgradePanel.coinValueUpgradeRectangles[1].ColorRectangle();
                 else if (_coinValueUpgradePrice == 8) UpgradePanel.coinValueUpgradeRectangles[2].ColorRectangle();
